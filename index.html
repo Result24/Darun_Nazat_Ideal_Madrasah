@@ -1,62 +1,119 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>দারুন নাজাত আইডিয়াল মাদ্রাসা — ফলাফল</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#087f4e">
+  <meta name="description" content="মাদ্রাসার পরীক্ষার ফলাফল দেখুন">
+  <title>দারুন নাজাত আইডিয়াল মাদ্রাসা — ফলাফল</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">
-    <div class="logo" aria-label="মাদ্রাসার লোগো">DN</div>
-    <div><div class="school-name" id="schoolName">দারুন নাজাত</div><div class="school-sub">আইডিয়াল মাদ্রাসা</div></div>
-  </div>
-  <button class="menu-btn" id="menuBtn" aria-label="মেনু">⋮</button>
-</header>
-<div class="menu" id="menu">
-  <button data-view="personal">ব্যক্তিগত ফলাফল</button>
-  <button data-view="classwise">ক্লাস ওয়ারী ফলাফল</button>
-</div>
+  <header class="top-header">
+    <div class="nav container">
+      <a class="brand" href="#" aria-label="হোম">
+        <div class="logo">📚</div>
+        <div class="brand-text">
+          <strong>দারুন নাজাত আইডিয়াল মাদ্রাসা</strong>
+          <span>ফলাফল প্রকাশনা</span>
+        </div>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="মেনু">☰</button>
+      <nav id="mobileMenu">
+        <a href="#search">ফলাফল</a>
+        <a href="#notice">নির্দেশনা</a>
+        <a href="#about">যোগাযোগ</a>
+      </nav>
+    </div>
 
-<main>
-  <section class="hero">
-    <div class="eyebrow">RESULT</div>
-    <h1 id="pageTitle">ফলাফল অনুসন্ধান</h1>
-    <p id="pageHint">নিচের তথ্যগুলো নির্বাচন করে ফলাফল খুঁজুন।</p>
-  </section>
+    <div class="hero">
+      <div class="container">
+        <h1>দারুন নাজাত আইডিয়াল মাদ্রাসা</h1>
+        <p>জ্ঞান, নৈতিকতা ও আদর্শ শিক্ষার সমন্বিত প্রতিষ্ঠান</p>
+        <small>পরীক্ষার ফলাফল অনলাইনে দেখুন</small>
+      </div>
+    </div>
+  </header>
 
-  <section class="card" id="personalView">
-    <label>সাল</label>
-    <select id="year"><option>২০২৬</option></select>
-    <label>পরীক্ষা</label>
-    <select id="exam"><option>দ্বিতীয় সাময়িক পরীক্ষা</option><option>প্রথম সাময়িক পরীক্ষা</option><option>বার্ষিক পরীক্ষা</option></select>
-    <label>শ্রেণি</label>
-    <select id="classSelect"></select>
-    <label>রোল নম্বর</label>
-    <input id="roll" inputmode="numeric" placeholder="যেমন: ১ অথবা 1">
-    <button class="primary" id="searchBtn">ফলাফল খুঁজুন</button>
-  </section>
+  <main class="container main">
+    <section class="result-card" id="search">
+      <div class="section-title">
+        <span class="title-icon">🎓</span>
+        <div>
+          <h2>ফলাফল অনুসন্ধান</h2>
+          <p>তথ্য পূরণ করে ফলাফল দেখুন</p>
+        </div>
+      </div>
 
-  <section class="card hidden" id="classView">
-    <label>সাল</label>
-    <select id="classYear"><option>২০২৬</option></select>
-    <label>পরীক্ষা</label>
-    <select id="classExam"><option>দ্বিতীয় সাময়িক পরীক্ষা</option><option>প্রথম সাময়িক পরীক্ষা</option><option>বার্ষিক পরীক্ষা</option></select>
-    <label>শ্রেণি</label>
-    <select id="classSelect2"></select>
-    <button class="primary" id="classSearchBtn">ক্লাসের ফলাফল দেখুন</button>
-  </section>
+      <form id="resultForm" novalidate>
+        <div class="field select-field">
+          <label for="resultYear">📅 সাল নির্বাচন করুন <b>*</b></label>
+          <select id="resultYear" required>
+            <option value="">-- সাল নির্বাচন করুন --</option>
+          </select>
+          <span class="field-help">যে সালের ফলাফল দেখতে চান সেটি নির্বাচন করুন</span>
+        </div>
 
-  <section id="result"></section>
-</main>
+        <div class="field select-field">
+          <label for="exam">📋 পরীক্ষা নির্বাচন করুন <b>*</b></label>
+          <select id="exam" required>
+            <option value="">-- পরীক্ষা নির্বাচন করুন --</option>
+          </select>
+          <span class="field-help">যে পরীক্ষার ফলাফল দেখতে চান সেটি নির্বাচন করুন</span>
+        </div>
 
-<footer>
-  <div class="about-title">ABOUT</div>
-  <h2 id="footerSchool">দারুন নাজাত আইডিয়াল মাদ্রাসা</h2>
-  <p>শিক্ষার্থীদের ফলাফল সহজ ও দ্রুত অনলাইনে দেখার জন্য এই সেবা।</p>
-  <div class="copyright">© ২০২৬ দারুন নাজাত আইডিয়াল মাদ্রাসা</div>
-</footer>
-<script src="script.js"></script>
+        <div class="field select-field">
+          <label for="className">🎓 শ্রেণি নির্বাচন করুন <b>*</b></label>
+          <select id="className" required disabled>
+            <option value="">-- আগে পরীক্ষা নির্বাচন করুন --</option>
+          </select>
+          <span class="field-help" id="classHelp">প্রথমে পরীক্ষা নির্বাচন করুন</span>
+        </div>
+
+        <div class="field">
+          <label for="roll">রোল নম্বর <b>*</b></label>
+          <input id="roll" type="text" inputmode="numeric" placeholder="যেমন: 101" required>
+        </div>
+
+        <div class="actions">
+          <button type="reset" class="btn btn-light">↻ পুনরায় সেট করুন</button>
+          <button type="submit" class="btn btn-primary">🔎 অনুসন্ধান করুন</button>
+        </div>
+      </form>
+
+      <div id="message" class="message hidden"></div>
+    </section>
+
+    <section id="resultArea" class="result-output hidden"></section>
+
+    <section id="notice" class="info-card">
+      <h3>📢 ফলাফল দেখার নির্দেশনা</h3>
+      <ul>
+        <li>প্রথমে সাল, তারপর পরীক্ষা ও শ্রেণি নির্বাচন করুন।</li>
+        <li>রোল নম্বর ইংরেজি সংখ্যায় লিখুন।</li>
+        <li>তথ্য না মিললে মাদ্রাসা কর্তৃপক্ষের সঙ্গে যোগাযোগ করুন।</li>
+      </ul>
+    </section>
+
+    <section id="about" class="contact-card">
+      <div>
+        <h3>যোগাযোগ</h3>
+        <p>মাদ্রাসার অফিসে যোগাযোগ করুন</p>
+      </div>
+      <div class="contact-items">
+        <span>📞 01XXXXXXXXX</span>
+        <span>📍 আপনার মাদ্রাসার ঠিকানা</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> দারুন নাজাত আইডিয়াল মাদ্রাসা
+      <div class="footer-sub">সকল অধিকার সংরক্ষিত</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
