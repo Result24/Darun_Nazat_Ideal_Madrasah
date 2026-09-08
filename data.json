@@ -1,0 +1,2493 @@
+{
+  "school": "দারুন নাজাত আইডিয়াল মাদ্রাসা",
+  "year": "২০২৬",
+  "exam": "দ্বিতীয় সাময়িক পরীক্ষা",
+  "classes": {
+    "Class-1": {
+      "subjects": [
+        {
+          "key": "c3",
+          "name": "KziAvb gvRx` I ZvRex`"
+        },
+        {
+          "key": "c4",
+          "name": "Aviex wjLv"
+        },
+        {
+          "key": "c5",
+          "name": "evsjv"
+        },
+        {
+          "key": "c6",
+          "name": "Bs‡iRx"
+        },
+        {
+          "key": "c7",
+          "name": "MwYZ"
+        },
+        {
+          "key": "c8",
+          "name": "Kvwjgv, gvmv: I mvav: Ávb"
+        },
+        {
+          "key": "c9",
+          "name": "Av`: mvjvZ I Av`: gvmb~bvn"
+        },
+        {
+          "key": "c10",
+          "name": "nvw`m kixd"
+        }
+      ],
+      "students": [
+        {
+          "roll": 1,
+          "name": "Avwe` †nvmvBb",
+          "marks": {
+            "c3": 100,
+            "c4": 100,
+            "c5": 100,
+            "c6": 100,
+            "c7": 88,
+            "c8": 100,
+            "c9": 100,
+            "c10": 100
+          },
+          "total": 788,
+          "average": 98.5,
+          "point": 5,
+          "grade": "A+",
+          "rank": "2q"
+        },
+        {
+          "roll": 2,
+          "name": "Avãyj †gv‡bg",
+          "marks": {
+            "c3": 99,
+            "c4": 100,
+            "c5": 98,
+            "c6": 100,
+            "c7": 99,
+            "c8": 100,
+            "c9": 100,
+            "c10": 100
+          },
+          "total": 796,
+          "average": 99.5,
+          "point": 5,
+          "grade": "A+",
+          "rank": "1g"
+        },
+        {
+          "roll": 3,
+          "name": "bvCgyj Bmjvg bvwej",
+          "marks": {
+            "c3": 98,
+            "c4": 97,
+            "c5": 88,
+            "c6": 98,
+            "c7": 98,
+            "c8": 95,
+            "c9": 90,
+            "c10": 97
+          },
+          "total": 761,
+          "average": 95.13,
+          "point": 5,
+          "grade": "A+",
+          "rank": 4
+        },
+        {
+          "roll": 4,
+          "name": "ZvIwmd ZvbwR`",
+          "marks": {
+            "c3": 90,
+            "c4": 97,
+            "c5": 97,
+            "c6": 99,
+            "c7": 98,
+            "c8": 95,
+            "c9": 95,
+            "c10": 100
+          },
+          "total": 771,
+          "average": 96.38,
+          "point": 5,
+          "grade": "A+",
+          "rank": "3q"
+        },
+        {
+          "roll": 5,
+          "name": "gyimvwjb Zv‡qd",
+          "marks": {
+            "c3": 95,
+            "c4": 97,
+            "c5": 93,
+            "c6": 98,
+            "c7": 98,
+            "c8": 90,
+            "c9": 85,
+            "c10": 95
+          },
+          "total": 751,
+          "average": 93.88,
+          "point": 5,
+          "grade": "A+",
+          "rank": 5
+        },
+        {
+          "roll": 6,
+          "name": "ivBqvb DwÏb",
+          "marks": {
+            "c3": 95,
+            "c4": 97,
+            "c5": 94,
+            "c6": 92,
+            "c7": 59,
+            "c8": 95,
+            "c9": 98,
+            "c10": 100
+          },
+          "total": 730,
+          "average": 91.25,
+          "point": 4.75,
+          "grade": "A",
+          "rank": 6
+        },
+        {
+          "roll": 7,
+          "name": "Avãyjøvn Avj ZvnwRe",
+          "marks": {
+            "c3": 90,
+            "c4": 97,
+            "c5": 87,
+            "c6": 69,
+            "c7": 70,
+            "c8": 90,
+            "c9": 95,
+            "c10": 95
+          },
+          "total": 693,
+          "average": 86.63,
+          "point": 4.69,
+          "grade": "A",
+          "rank": 9
+        },
+        {
+          "roll": 8,
+          "name": "wm`ivZzj gybZvnv",
+          "marks": {
+            "c3": 75,
+            "c4": 97,
+            "c5": 81,
+            "c6": 79,
+            "c7": 94,
+            "c8": 80,
+            "c9": 75,
+            "c10": 90
+          },
+          "total": 671,
+          "average": 83.88,
+          "point": 4.63,
+          "grade": "A",
+          "rank": 11
+        },
+        {
+          "roll": 9,
+          "name": "Avwikv Bmjvg",
+          "marks": {
+            "c3": 95,
+            "c4": 97,
+            "c5": 87,
+            "c6": 92,
+            "c7": 98,
+            "c8": 85,
+            "c9": 80,
+            "c10": 95
+          },
+          "total": 729,
+          "average": 91.13,
+          "point": 5,
+          "grade": "A+",
+          "rank": 7
+        },
+        {
+          "roll": 10,
+          "name": "gviBqvg wejwKm",
+          "marks": {
+            "c3": 90,
+            "c4": 97,
+            "c5": 96,
+            "c6": 87,
+            "c7": 86,
+            "c8": 83,
+            "c9": 75,
+            "c10": 85
+          },
+          "total": 699,
+          "average": 87.38,
+          "point": 4.88,
+          "grade": "A",
+          "rank": 8
+        },
+        {
+          "roll": 11,
+          "name": "Kvwigv Bqvmwgb",
+          "marks": {
+            "c3": 70,
+            "c4": 97,
+            "c5": 70,
+            "c6": 48,
+            "c7": 76,
+            "c8": 75,
+            "c9": 77,
+            "c10": 80
+          },
+          "total": 593,
+          "average": 74.13,
+          "point": 4,
+          "grade": "A",
+          "rank": 13
+        },
+        {
+          "roll": 12,
+          "name": "Bmdvi †nv‡mb mvw`K",
+          "marks": {
+            "c3": 80,
+            "c4": 97,
+            "c5": 81,
+            "c6": 94,
+            "c7": 75,
+            "c8": 70,
+            "c9": 78,
+            "c10": 75
+          },
+          "total": 650,
+          "average": 81.25,
+          "point": 4.5,
+          "grade": "A",
+          "rank": 12
+        },
+        {
+          "roll": 13,
+          "name": "Avw`e †nv‡mb",
+          "marks": {
+            "c3": 70,
+            "c4": 97,
+            "c5": 70,
+            "c6": 78,
+            "c7": 67,
+            "c8": 60,
+            "c9": 70,
+            "c10": 60
+          },
+          "total": 572,
+          "average": 71.5,
+          "point": 3.94,
+          "grade": "A-",
+          "rank": 15
+        },
+        {
+          "roll": 14,
+          "name": "Iwn`yj Bmjvg",
+          "marks": {
+            "c3": 65,
+            "c4": 97,
+            "c5": 65,
+            "c6": 82,
+            "c7": 40,
+            "c8": 60,
+            "c9": 60,
+            "c10": 65
+          },
+          "total": 534,
+          "average": 66.75,
+          "point": 3.69,
+          "grade": "A-",
+          "rank": 18
+        },
+        {
+          "roll": 15,
+          "name": "gygZvwnbv †gnRvweb",
+          "marks": {
+            "c3": 65,
+            "c4": 97,
+            "c5": 65,
+            "c6": 75,
+            "c7": 90,
+            "c8": 60,
+            "c9": 60,
+            "c10": 50
+          },
+          "total": 562,
+          "average": 70.25,
+          "point": 3.88,
+          "grade": "A-",
+          "rank": 17
+        },
+        {
+          "roll": 16,
+          "name": "gviæd †nv‡mb",
+          "marks": {
+            "c3": 70,
+            "c4": 97,
+            "c5": 75,
+            "c6": 62,
+            "c7": 74,
+            "c8": 60,
+            "c9": 65,
+            "c10": 65
+          },
+          "total": 568,
+          "average": 71,
+          "point": 3.88,
+          "grade": "A-",
+          "rank": 16
+        },
+        {
+          "roll": 17,
+          "name": "Avwiqvb wRnvb",
+          "marks": {
+            "c3": 70,
+            "c4": 97,
+            "c5": 62,
+            "c6": 66,
+            "c7": 44,
+            "c8": 55,
+            "c9": 60,
+            "c10": 50
+          },
+          "total": 504,
+          "average": 63,
+          "point": 3.44,
+          "grade": "B",
+          "rank": 20
+        },
+        {
+          "roll": 18,
+          "name": "Avwiqvb Avn‡g`",
+          "marks": {
+            "c3": 60,
+            "c4": 97,
+            "c5": 0,
+            "c6": 58,
+            "c7": 33,
+            "c8": 50,
+            "c9": 55,
+            "c10": 45
+          },
+          "total": 398,
+          "average": 49.75,
+          "point": 2.56,
+          "grade": "C",
+          "rank": 22
+        },
+        {
+          "roll": 19,
+          "name": "Avãyjøvn Avj gvwng",
+          "marks": {
+            "c3": 70,
+            "c4": 97,
+            "c5": 84,
+            "c6": 79,
+            "c7": 33,
+            "c8": 60,
+            "c9": 70,
+            "c10": 80
+          },
+          "total": 573,
+          "average": 71.63,
+          "point": 3.94,
+          "grade": "A-",
+          "rank": 14
+        },
+        {
+          "roll": 20,
+          "name": "Avãyyj Kv‡`i †Rvnvb",
+          "marks": {
+            "c3": 60,
+            "c4": 97,
+            "c5": 40,
+            "c6": 40,
+            "c7": 39,
+            "c8": 55,
+            "c9": 65,
+            "c10": 65
+          },
+          "total": 461,
+          "average": 57.63,
+          "point": 2.94,
+          "grade": "C",
+          "rank": 21
+        },
+        {
+          "roll": 21,
+          "name": "†ZŠwn`yj Bmjvg",
+          "marks": {
+            "c3": 50,
+            "c4": 97,
+            "c5": 38,
+            "c6": 40,
+            "c7": 33,
+            "c8": 50,
+            "c9": 50,
+            "c10": 40
+          },
+          "total": 398,
+          "average": 49.75,
+          "point": 2.5,
+          "grade": "C",
+          "rank": 22
+        },
+        {
+          "roll": 22,
+          "name": "†gvKviig †nv‡mb",
+          "marks": {
+            "c3": 70,
+            "c4": 97,
+            "c5": 85,
+            "c6": 90,
+            "c7": 77,
+            "c8": 90,
+            "c9": 88,
+            "c10": 90
+          },
+          "total": 687,
+          "average": 85.88,
+          "point": 4.75,
+          "grade": "A",
+          "rank": 10
+        },
+        {
+          "roll": 23,
+          "name": "mvdixb Avn‡g`",
+          "marks": {
+            "c3": 95,
+            "c4": 97,
+            "c5": 98,
+            "c6": 100,
+            "c7": 98,
+            "c8": 100,
+            "c9": 100,
+            "c10": 100
+          },
+          "total": 788,
+          "average": 98.5,
+          "point": 5,
+          "grade": "A+",
+          "rank": "2q"
+        },
+        {
+          "roll": 24,
+          "name": "byiæj Bmjvg mv¾v`",
+          "marks": {
+            "c3": 70,
+            "c4": 97,
+            "c5": 60,
+            "c6": 65,
+            "c7": 64,
+            "c8": 50,
+            "c9": 55,
+            "c10": 50
+          },
+          "total": 511,
+          "average": 63.88,
+          "point": 3.56,
+          "grade": "A-",
+          "rank": 19
+        }
+      ]
+    },
+    "Class-2": {
+      "subjects": [
+        {
+          "key": "c3",
+          "name": "KziAvb I ZvRex`"
+        },
+        {
+          "key": "c4",
+          "name": "Aviex wjLv"
+        },
+        {
+          "key": "c5",
+          "name": "evsjv"
+        },
+        {
+          "key": "c6",
+          "name": "Bs‡iRx"
+        },
+        {
+          "key": "c7",
+          "name": "MwYZ"
+        },
+        {
+          "key": "c8",
+          "name": "cwi: cwi: I mvav: Ávb"
+        },
+        {
+          "key": "c9",
+          "name": "Kvwjgv I gvmvBj"
+        },
+        {
+          "key": "c10",
+          "name": "Av`: mvjvZ I Av`: gvmb~bvn"
+        },
+        {
+          "key": "c11",
+          "name": "nvw`m I Avm:ûmbv"
+        }
+      ],
+      "students": [
+        {
+          "roll": 1,
+          "name": "hyev‡qi Avng`",
+          "marks": {
+            "c3": 98,
+            "c4": 98,
+            "c5": 98,
+            "c6": 99,
+            "c7": 70,
+            "c8": 98,
+            "c9": 100,
+            "c10": 98,
+            "c11": 100
+          },
+          "total": 859,
+          "average": 95.44,
+          "point": 4.89,
+          "grade": "A",
+          "rank": "2q"
+        },
+        {
+          "roll": 2,
+          "name": "nvmbv Zvev”Qzg",
+          "marks": {
+            "c3": 94,
+            "c4": 95,
+            "c5": 97,
+            "c6": 97,
+            "c7": 94,
+            "c8": 97,
+            "c9": 100,
+            "c10": 100,
+            "c11": 98
+          },
+          "total": 872,
+          "average": 96.89,
+          "point": 5,
+          "grade": "A+",
+          "rank": "1g"
+        },
+        {
+          "roll": 3,
+          "name": "AvZwKqv dvBRvn",
+          "marks": {
+            "c3": 99,
+            "c4": 90,
+            "c5": 95,
+            "c6": 90,
+            "c7": 85,
+            "c8": 95,
+            "c9": 100,
+            "c10": 100,
+            "c11": 95
+          },
+          "total": 849,
+          "average": 94.33,
+          "point": 5,
+          "grade": "A+",
+          "rank": "3q"
+        },
+        {
+          "roll": 4,
+          "name": "‡gvevwk^iv RvbœvZ",
+          "marks": {
+            "c3": 90,
+            "c4": 97,
+            "c5": 98,
+            "c6": 100,
+            "c7": 86,
+            "c8": 90,
+            "c9": 98,
+            "c10": 95,
+            "c11": 95
+          },
+          "total": 849,
+          "average": 94.33,
+          "point": 5,
+          "grade": "A+",
+          "rank": "3q"
+        },
+        {
+          "roll": 5,
+          "name": "Avãyi ingvb",
+          "marks": {
+            "c3": 100,
+            "c4": 97,
+            "c5": 96,
+            "c6": 99,
+            "c7": 90,
+            "c8": 100,
+            "c9": 100,
+            "c10": 100,
+            "c11": 90
+          },
+          "total": 872,
+          "average": 96.89,
+          "point": 5,
+          "grade": "A+",
+          "rank": "1g"
+        },
+        {
+          "roll": 6,
+          "name": "Avwiev myjZvbv",
+          "marks": {
+            "c3": 99,
+            "c4": 95,
+            "c5": 96,
+            "c6": 100,
+            "c7": 90,
+            "c8": 92,
+            "c9": 95,
+            "c10": 90,
+            "c11": 80
+          },
+          "total": 837,
+          "average": 93,
+          "point": 5,
+          "grade": "A+",
+          "rank": 4
+        },
+        {
+          "roll": 7,
+          "name": "myivBqv RvbœvZ",
+          "marks": {
+            "c3": 70,
+            "c4": 75,
+            "c5": 75,
+            "c6": 66,
+            "c7": 72,
+            "c8": 70,
+            "c9": 80,
+            "c10": 60,
+            "c11": 50
+          },
+          "total": 618,
+          "average": 68.67,
+          "point": 3.89,
+          "grade": "A-",
+          "rank": 13
+        },
+        {
+          "roll": 8,
+          "name": "RvbœvZzj Avjxqv",
+          "marks": {
+            "c3": 98,
+            "c4": 85,
+            "c5": 97,
+            "c6": 94,
+            "c7": 78,
+            "c8": 85,
+            "c9": 95,
+            "c10": 90,
+            "c11": 75
+          },
+          "total": 797,
+          "average": 88.56,
+          "point": 4.78,
+          "grade": "A",
+          "rank": 5
+        },
+        {
+          "roll": 9,
+          "name": "ûgvqiv Avdiv",
+          "marks": {
+            "c3": 99,
+            "c4": 92,
+            "c5": 95,
+            "c6": 84,
+            "c7": 82,
+            "c8": 90,
+            "c9": 90,
+            "c10": 85,
+            "c11": 70
+          },
+          "total": 787,
+          "average": 87.44,
+          "point": 4.89,
+          "grade": "A",
+          "rank": 6
+        },
+        {
+          "roll": 10,
+          "name": "mvwgiæj Bmjvg",
+          "marks": {
+            "c3": 80,
+            "c4": 70,
+            "c5": 75,
+            "c6": 72,
+            "c7": 69,
+            "c8": 78,
+            "c9": 85,
+            "c10": 85,
+            "c11": 60
+          },
+          "total": 674,
+          "average": 74.89,
+          "point": 4.22,
+          "grade": "A",
+          "rank": 11
+        },
+        {
+          "roll": 11,
+          "name": "dv‡ZgvZzj RvbœvZ",
+          "marks": {
+            "c3": 80,
+            "c4": 60,
+            "c5": 80,
+            "c6": 78,
+            "c7": 80,
+            "c8": 80,
+            "c9": 90,
+            "c10": 95,
+            "c11": 85
+          },
+          "total": 728,
+          "average": 80.89,
+          "point": 4.72,
+          "grade": "A",
+          "rank": 9
+        },
+        {
+          "roll": 12,
+          "name": "Avqgvb Rvwid",
+          "marks": {
+            "c3": 95,
+            "c4": 82,
+            "c5": 95,
+            "c6": 92,
+            "c7": 81,
+            "c8": 93,
+            "c9": 85,
+            "c10": 80,
+            "c11": 75
+          },
+          "total": 778,
+          "average": 86.44,
+          "point": 4.89,
+          "grade": "A",
+          "rank": 7
+        },
+        {
+          "roll": 13,
+          "name": "‡Rvev‡q` †nv: ZvwQe",
+          "marks": {
+            "c3": 85,
+            "c4": 65,
+            "c5": 70,
+            "c6": 60,
+            "c7": 72,
+            "c8": 77,
+            "c9": 80,
+            "c10": 85,
+            "c11": 85
+          },
+          "total": 679,
+          "average": 75.44,
+          "point": 4.33,
+          "grade": "A",
+          "rank": 10
+        },
+        {
+          "roll": 14,
+          "name": "wewe gwiqg",
+          "marks": {
+            "c3": "*",
+            "c4": "*",
+            "c5": "*",
+            "c6": "*",
+            "c7": "*",
+            "c8": "*",
+            "c9": "*",
+            "c10": "*",
+            "c11": "*"
+          },
+          "total": null,
+          "average": null,
+          "point": null,
+          "grade": null,
+          "rank": "1g"
+        },
+        {
+          "roll": 15,
+          "name": "Aveivi Avng`",
+          "marks": {
+            "c3": 95,
+            "c4": 80,
+            "c5": 75,
+            "c6": 84,
+            "c7": 83,
+            "c8": 93,
+            "c9": 80,
+            "c10": 75,
+            "c11": 75
+          },
+          "total": 740,
+          "average": 82.22,
+          "point": 4.67,
+          "grade": "A",
+          "rank": 8
+        },
+        {
+          "roll": 16,
+          "name": "mvdIqvb mvw``",
+          "marks": {
+            "c3": "*",
+            "c4": "*",
+            "c5": "*",
+            "c6": "*",
+            "c7": "*",
+            "c8": "*",
+            "c9": "*",
+            "c10": "*",
+            "c11": "*"
+          },
+          "total": null,
+          "average": null,
+          "point": null,
+          "grade": null,
+          "rank": "1g"
+        },
+        {
+          "roll": 17,
+          "name": "Kwj Av³vi",
+          "marks": {
+            "c3": 70,
+            "c4": 65,
+            "c5": 85,
+            "c6": 92,
+            "c7": 77,
+            "c8": 72,
+            "c9": 70,
+            "c10": 65,
+            "c11": 55
+          },
+          "total": 651,
+          "average": 72.33,
+          "point": 4,
+          "grade": "A",
+          "rank": 12
+        },
+        {
+          "roll": 18,
+          "name": "bvwn` nvmvb",
+          "marks": {
+            "c3": 70,
+            "c4": 45,
+            "c5": 40,
+            "c6": 40,
+            "c7": 38,
+            "c8": 60,
+            "c9": 70,
+            "c10": 60,
+            "c11": 50
+          },
+          "total": 473,
+          "average": 52.56,
+          "point": 2.78,
+          "grade": "C",
+          "rank": 14
+        }
+      ]
+    },
+    "Class-3": {
+      "subjects": [
+        {
+          "key": "c3",
+          "name": "KziAvb gvRx` I ZvRex`"
+        },
+        {
+          "key": "c4",
+          "name": "Aviex wjLv"
+        },
+        {
+          "key": "c5",
+          "name": "evsjv"
+        },
+        {
+          "key": "c6",
+          "name": "Bs‡iRx"
+        },
+        {
+          "key": "c7",
+          "name": "MwYZ"
+        },
+        {
+          "key": "c8",
+          "name": "mgvR, weÁvb I mvaviY Ávb"
+        },
+        {
+          "key": "c9",
+          "name": "Kvwjgv I gvmvBj"
+        },
+        {
+          "key": "c10",
+          "name": "Av`:mvjvZ I gvmbybvn"
+        },
+        {
+          "key": "c11",
+          "name": "nvw`m I Avm:ûmbv"
+        }
+      ],
+      "students": [
+        {
+          "roll": 1,
+          "name": "gviBqvg myjZvb",
+          "marks": {
+            "c3": 100,
+            "c4": 98,
+            "c5": 99,
+            "c6": 98,
+            "c7": 87,
+            "c8": 98,
+            "c9": 98,
+            "c10": 95,
+            "c11": 100
+          },
+          "total": 873,
+          "average": 97,
+          "point": 5,
+          "grade": "A+",
+          "rank": "2q"
+        },
+        {
+          "roll": 2,
+          "name": "bvwRdv †nvmvBb",
+          "marks": {
+            "c3": 95,
+            "c4": 100,
+            "c5": 100,
+            "c6": 94,
+            "c7": 95,
+            "c8": 100,
+            "c9": 99,
+            "c10": 97,
+            "c11": 100
+          },
+          "total": 880,
+          "average": 97.78,
+          "point": 5,
+          "grade": "A+",
+          "rank": "1g"
+        },
+        {
+          "roll": 3,
+          "name": "‡ZŠwdKzj Bmjvg",
+          "marks": {
+            "c3": 90,
+            "c4": 85,
+            "c5": 82,
+            "c6": 65,
+            "c7": 61,
+            "c8": 64,
+            "c9": 95,
+            "c10": 85,
+            "c11": 95
+          },
+          "total": 722,
+          "average": 80.22,
+          "point": 4.5,
+          "grade": "A",
+          "rank": "3q"
+        },
+        {
+          "roll": 4,
+          "name": "gwbiæj Bmjvg",
+          "marks": {
+            "c3": 70,
+            "c4": 65,
+            "c5": 55,
+            "c6": 34,
+            "c7": 33,
+            "c8": 60,
+            "c9": 85,
+            "c10": 80,
+            "c11": 88
+          },
+          "total": 570,
+          "average": 63.33,
+          "point": 3.44,
+          "grade": "B",
+          "rank": 4
+        },
+        {
+          "roll": 5,
+          "name": "BmgvZ gvKQzivn",
+          "marks": {
+            "c3": 75,
+            "c4": 75,
+            "c5": 65,
+            "c6": 40,
+            "c7": 33,
+            "c8": 58,
+            "c9": 80,
+            "c10": 65,
+            "c11": 78
+          },
+          "total": 569,
+          "average": 63.22,
+          "point": 3.33,
+          "grade": "B",
+          "rank": 5
+        },
+        {
+          "roll": 6,
+          "name": "D‡¤§ nvdmv",
+          "marks": {
+            "c3": 70,
+            "c4": 55,
+            "c5": 64,
+            "c6": 30,
+            "c7": 25,
+            "c8": 71,
+            "c9": 70,
+            "c10": 60,
+            "c11": 75
+          },
+          "total": 520,
+          "average": 57.78,
+          "point": 2.89,
+          "grade": "C",
+          "rank": 6
+        },
+        {
+          "roll": 7,
+          "name": "&Avwei †nv‡mb",
+          "marks": {},
+          "total": null,
+          "average": null,
+          "point": null,
+          "grade": null,
+          "rank": "1g"
+        }
+      ]
+    },
+    "Class-4": {
+      "subjects": [
+        {
+          "key": "c3",
+          "name": "Bkiæbv `vimvb"
+        },
+        {
+          "key": "c4",
+          "name": "Zv'jxgyj Bmjvg"
+        },
+        {
+          "key": "c5",
+          "name": "evsjv I e¨vKiY"
+        },
+        {
+          "key": "c6",
+          "name": "Bs‡iwR I MÖvgvi"
+        },
+        {
+          "key": "c7",
+          "name": "KziAvb gvRx`"
+        },
+        {
+          "key": "c8",
+          "name": "BwZnvm, f~‡Mvj I mgvR"
+        },
+        {
+          "key": "c9",
+          "name": "MwYZ"
+        }
+      ],
+      "students": [
+        {
+          "roll": 1,
+          "name": "mvewibv ZvIwmb",
+          "marks": {
+            "c3": 85,
+            "c4": 69,
+            "c5": 43,
+            "c6": 79,
+            "c7": 90,
+            "c8": 41,
+            "c9": 44
+          },
+          "total": 451,
+          "average": 64.43,
+          "point": 3.36,
+          "grade": "B",
+          "rank": 5
+        },
+        {
+          "roll": 2,
+          "name": "ZvmwcÖqv Rvnvb",
+          "marks": {
+            "c3": 96,
+            "c4": 95,
+            "c5": 50,
+            "c6": 85,
+            "c7": 90,
+            "c8": 53,
+            "c9": 50
+          },
+          "total": 519,
+          "average": 74.14,
+          "point": 4.14,
+          "grade": "A",
+          "rank": "1g"
+        },
+        {
+          "roll": 3,
+          "name": "dvIwRqv Zvevmmyg",
+          "marks": {
+            "c3": 84,
+            "c4": 80,
+            "c5": 71,
+            "c6": 56,
+            "c7": 67,
+            "c8": 47,
+            "c9": 71
+          },
+          "total": 476,
+          "average": 68,
+          "point": 3.79,
+          "grade": "A-",
+          "rank": "3q"
+        },
+        {
+          "roll": 4,
+          "name": "RvbœvZyj †di‡`Šm",
+          "marks": {
+            "c3": 80,
+            "c4": 74,
+            "c5": 80,
+            "c6": 44,
+            "c7": 92,
+            "c8": 57,
+            "c9": 43
+          },
+          "total": 470,
+          "average": 67.14,
+          "point": 3.71,
+          "grade": "A-",
+          "rank": 4
+        },
+        {
+          "roll": 5,
+          "name": "D‡¤§ Avqgvb",
+          "marks": {
+            "c3": 76,
+            "c4": 48,
+            "c5": 64,
+            "c6": 37,
+            "c7": 70,
+            "c8": 49,
+            "c9": 42
+          },
+          "total": 386,
+          "average": 55.14,
+          "point": 2.64,
+          "grade": "C",
+          "rank": 6
+        },
+        {
+          "roll": 6,
+          "name": "BmivZ Rvnvb",
+          "marks": {
+            "c3": 44,
+            "c4": 35,
+            "c5": 40,
+            "c6": 33,
+            "c7": 45,
+            "c8": 35,
+            "c9": 38
+          },
+          "total": 270,
+          "average": 38.57,
+          "point": 1.43,
+          "grade": "D",
+          "rank": 8
+        },
+        {
+          "roll": 7,
+          "name": "mvw`qv Av³vi",
+          "marks": {
+            "c3": 93,
+            "c4": 93,
+            "c5": 66,
+            "c6": 56,
+            "c7": 88,
+            "c8": 46,
+            "c9": 35
+          },
+          "total": 477,
+          "average": 68.14,
+          "point": 3.5,
+          "grade": "A-",
+          "rank": "2q"
+        },
+        {
+          "roll": 8,
+          "name": "Avdwib myjZvbv",
+          "marks": {
+            "c3": 38,
+            "c4": 40,
+            "c5": 33,
+            "c6": 33,
+            "c7": 40,
+            "c8": 33,
+            "c9": 33
+          },
+          "total": 250,
+          "average": 35.71,
+          "point": 1.29,
+          "grade": "D",
+          "rank": 9
+        },
+        {
+          "roll": 9,
+          "name": "gwiqg gvneye",
+          "marks": {
+            "c3": 34,
+            "c4": 35,
+            "c5": 33,
+            "c6": 33,
+            "c7": 40,
+            "c8": 33,
+            "c9": 33
+          },
+          "total": 241,
+          "average": 34.43,
+          "point": 1.14,
+          "grade": "D",
+          "rank": 10
+        },
+        {
+          "roll": 10,
+          "name": "gwiqg Kvgiæj",
+          "marks": {
+            "c3": 44,
+            "c4": 52,
+            "c5": 33,
+            "c6": 33,
+            "c7": 40,
+            "c8": 33,
+            "c9": 35
+          },
+          "total": 270,
+          "average": 38.57,
+          "point": 1.57,
+          "grade": "D",
+          "rank": 8
+        },
+        {
+          "roll": 11,
+          "name": "Zvmwjgv gxg",
+          "marks": {
+            "c3": 45,
+            "c4": 40,
+            "c5": 44,
+            "c6": 38,
+            "c7": 52,
+            "c8": 48,
+            "c9": 35
+          },
+          "total": 302,
+          "average": 43.14,
+          "point": 1.86,
+          "grade": "D",
+          "rank": 7
+        }
+      ]
+    },
+    "Class-5": {
+      "subjects": [
+        {
+          "key": "c3",
+          "name": "KziAvb gvRx`"
+        },
+        {
+          "key": "c4",
+          "name": "Zv'jxgyj Bmjvg"
+        },
+        {
+          "key": "c5",
+          "name": "evsjv I e¨vKiY"
+        },
+        {
+          "key": "c6",
+          "name": "Bs‡iwR I MÖvgvi"
+        },
+        {
+          "key": "c7",
+          "name": "G‡mv Aviex wkwL"
+        },
+        {
+          "key": "c8",
+          "name": "BwZnvm, f~‡Mvj I mgvR"
+        },
+        {
+          "key": "c9",
+          "name": "MwYZ"
+        }
+      ],
+      "students": [
+        {
+          "roll": 1,
+          "name": "wgkKvZyj RvbœvZ",
+          "marks": {
+            "c3": 84,
+            "c4": 60,
+            "c5": 65,
+            "c6": 54,
+            "c7": 67,
+            "c8": 40,
+            "c9": 33
+          },
+          "total": 403,
+          "average": 57.57,
+          "point": 3.07,
+          "grade": "B",
+          "rank": "3q"
+        },
+        {
+          "roll": 2,
+          "name": "wgdZvûj gvwniv",
+          "marks": {
+            "c3": 80,
+            "c4": 78,
+            "c5": 51,
+            "c6": 60,
+            "c7": 83,
+            "c8": 35,
+            "c9": 55
+          },
+          "total": 442,
+          "average": 63.14,
+          "point": 3.5,
+          "grade": "A-",
+          "rank": "2q"
+        },
+        {
+          "roll": 3,
+          "name": "ivBmv Av³vi",
+          "marks": {
+            "c3": 50,
+            "c4": 44,
+            "c5": 33,
+            "c6": 40,
+            "c7": 38,
+            "c8": 35,
+            "c9": 33
+          },
+          "total": 273,
+          "average": 39,
+          "point": 1.57,
+          "grade": "D",
+          "rank": 5
+        },
+        {
+          "roll": 4,
+          "name": "mygvBqv Av³vi",
+          "marks": {
+            "c3": 78,
+            "c4": 50,
+            "c5": 33,
+            "c6": 42,
+            "c7": 57,
+            "c8": 33,
+            "c9": 33
+          },
+          "total": 326,
+          "average": 46.57,
+          "point": 2.14,
+          "grade": "C",
+          "rank": 4
+        },
+        {
+          "roll": 5,
+          "name": "gvBgybv bvBgv",
+          "marks": {
+            "c3": 95,
+            "c4": 90,
+            "c5": 94,
+            "c6": 80,
+            "c7": 92,
+            "c8": 85,
+            "c9": 83
+          },
+          "total": 619,
+          "average": 88.43,
+          "point": 5,
+          "grade": "A+",
+          "rank": "1g"
+        }
+      ]
+    },
+    "Class-6": {
+      "subjects": [
+        {
+          "key": "c3",
+          "name": "G‡mv Aviex wkwL"
+        },
+        {
+          "key": "c4",
+          "name": "ZvwiLyj Bmjvg"
+        },
+        {
+          "key": "c5",
+          "name": "evsjv I evsjv e¨vKiY"
+        },
+        {
+          "key": "c6",
+          "name": "Bs‡iwR I MÖvgvi"
+        },
+        {
+          "key": "c7",
+          "name": "KziAvb gvRx`"
+        },
+        {
+          "key": "c8",
+          "name": "AvZ-Zvgixbyj wKZvex"
+        },
+        {
+          "key": "c9",
+          "name": "MwYZ"
+        },
+        {
+          "key": "c10",
+          "name": "†e‡nkZx †RIi"
+        },
+        {
+          "key": "c11",
+          "name": "gxhvbym mid"
+        }
+      ],
+      "students": [
+        {
+          "roll": 1,
+          "name": "mvw`qvZzZ Zvbnv",
+          "marks": {
+            "c3": 92,
+            "c4": 100,
+            "c5": 90,
+            "c6": 81,
+            "c7": 98,
+            "c8": 94,
+            "c9": 62,
+            "c10": 98,
+            "c11": 94
+          },
+          "total": 809,
+          "average": 89.89,
+          "point": 4.83,
+          "grade": "A",
+          "rank": "2q"
+        },
+        {
+          "roll": 2,
+          "name": "Avwikv myjZvb",
+          "marks": {
+            "c3": 65,
+            "c4": 75,
+            "c5": 66,
+            "c6": 90,
+            "c7": 85,
+            "c8": 61,
+            "c9": 33,
+            "c10": 55,
+            "c11": 60
+          },
+          "total": 590,
+          "average": 65.56,
+          "point": 3.56,
+          "grade": "A-",
+          "rank": 7
+        },
+        {
+          "roll": 3,
+          "name": "nvdmv Av³vi",
+          "marks": {
+            "c3": 60,
+            "c4": 93,
+            "c5": 68,
+            "c6": 64,
+            "c7": 80,
+            "c8": 53,
+            "c9": 33,
+            "c10": 70,
+            "c11": 77
+          },
+          "total": 598,
+          "average": 66.44,
+          "point": 3.61,
+          "grade": "A-",
+          "rank": 6
+        },
+        {
+          "roll": 4,
+          "name": "Avdwib Av³vi",
+          "marks": {
+            "c3": 82,
+            "c4": 70,
+            "c5": 87,
+            "c6": 49,
+            "c7": 96,
+            "c8": 67,
+            "c9": 44,
+            "c10": 96,
+            "c11": 87
+          },
+          "total": 678,
+          "average": 75.33,
+          "point": 4.06,
+          "grade": "A",
+          "rank": 4
+        },
+        {
+          "roll": 5,
+          "name": "mvbwR`v myjZvbv",
+          "marks": {
+            "c3": 40,
+            "c4": 50,
+            "c5": 39,
+            "c6": 35,
+            "c7": 70,
+            "c8": 37,
+            "c9": 38,
+            "c10": 45,
+            "c11": 65
+          },
+          "total": 419,
+          "average": 46.56,
+          "point": 2.06,
+          "grade": "C",
+          "rank": 10
+        },
+        {
+          "roll": 6,
+          "name": "Avwbmv Zvev”Qyg",
+          "marks": {
+            "c3": 40,
+            "c4": 40,
+            "c5": 38,
+            "c6": 46,
+            "c7": 55,
+            "c8": 44,
+            "c9": 34,
+            "c10": 40,
+            "c11": 43
+          },
+          "total": 380,
+          "average": 42.22,
+          "point": 1.89,
+          "grade": "D",
+          "rank": 11
+        },
+        {
+          "roll": 7,
+          "name": "wewe †ivKvBqv",
+          "marks": {
+            "c3": 35,
+            "c4": 33,
+            "c5": 40,
+            "c6": 38,
+            "c7": 60,
+            "c8": 35,
+            "c9": 33,
+            "c10": 45,
+            "c11": 40
+          },
+          "total": 359,
+          "average": 39.89,
+          "point": 1.61,
+          "grade": "D",
+          "rank": 13
+        },
+        {
+          "roll": 8,
+          "name": "Zvevmmyg Av³vi",
+          "marks": {
+            "c3": 50,
+            "c4": 40,
+            "c5": 36,
+            "c6": 37,
+            "c7": 70,
+            "c8": 47,
+            "c9": 33,
+            "c10": 52,
+            "c11": 62
+          },
+          "total": 427,
+          "average": 47.44,
+          "point": 2.28,
+          "grade": "C",
+          "rank": 9
+        },
+        {
+          "roll": 9,
+          "name": "dv‡Zgv Av³vi",
+          "marks": {
+            "c3": 37,
+            "c4": 40,
+            "c5": 35,
+            "c6": 39,
+            "c7": 50,
+            "c8": 38,
+            "c9": 34,
+            "c10": 60,
+            "c11": 46
+          },
+          "total": 379,
+          "average": 42.11,
+          "point": 1.72,
+          "grade": "D",
+          "rank": 12
+        },
+        {
+          "roll": 10,
+          "name": "wewe hqbe",
+          "marks": {
+            "c3": 91,
+            "c4": 99,
+            "c5": 90,
+            "c6": 75,
+            "c7": 90,
+            "c8": 95,
+            "c9": 60,
+            "c10": 90,
+            "c11": 94
+          },
+          "total": 784,
+          "average": 87.11,
+          "point": 4.72,
+          "grade": "A",
+          "rank": "3q"
+        },
+        {
+          "roll": 11,
+          "name": "bymivZ Rvnvb",
+          "marks": {
+            "c3": 33,
+            "c4": 33,
+            "c5": 33,
+            "c6": 35,
+            "c7": 50,
+            "c8": 33,
+            "c9": 33,
+            "c10": 33,
+            "c11": 35
+          },
+          "total": 318,
+          "average": 35.33,
+          "point": 1.22,
+          "grade": "D",
+          "rank": 15
+        },
+        {
+          "roll": 12,
+          "name": "ZvQwcÖqv Av³vi",
+          "marks": {
+            "c3": 33,
+            "c4": 33,
+            "c5": 33,
+            "c6": 33,
+            "c7": 40,
+            "c8": 35,
+            "c9": 33,
+            "c10": 35,
+            "c11": 36
+          },
+          "total": 311,
+          "average": 34.56,
+          "point": 1.11,
+          "grade": "D",
+          "rank": 16
+        },
+        {
+          "roll": 13,
+          "name": "Av‡qkv nK",
+          "marks": {
+            "c3": 60,
+            "c4": 90,
+            "c5": 63,
+            "c6": 57,
+            "c7": 80,
+            "c8": 65,
+            "c9": 60,
+            "c10": 60,
+            "c11": 75
+          },
+          "total": 610,
+          "average": 67.78,
+          "point": 3.83,
+          "grade": "A-",
+          "rank": 5
+        },
+        {
+          "roll": 14,
+          "name": "mvw`qv ingvb",
+          "marks": {
+            "c3": 40,
+            "c4": 45,
+            "c5": 68,
+            "c6": 53,
+            "c7": 74,
+            "c8": 42,
+            "c9": 38,
+            "c10": 61,
+            "c11": 58
+          },
+          "total": 479,
+          "average": 53.22,
+          "point": 2.67,
+          "grade": "C",
+          "rank": 8
+        },
+        {
+          "roll": 15,
+          "name": "ûgvBiv Av³vi",
+          "marks": {
+            "c3": 100,
+            "c4": 100,
+            "c5": 93,
+            "c6": 88,
+            "c7": 90,
+            "c8": 95,
+            "c9": 100,
+            "c10": 100,
+            "c11": 95
+          },
+          "total": 861,
+          "average": 95.67,
+          "point": 5,
+          "grade": "A+",
+          "rank": "1g"
+        },
+        {
+          "roll": 16,
+          "name": "RvbœvZyj bvCgv",
+          "marks": {
+            "c3": 35,
+            "c4": 33,
+            "c5": 33,
+            "c6": 38,
+            "c7": 70,
+            "c8": 34,
+            "c9": 33,
+            "c10": 33,
+            "c11": 42
+          },
+          "total": 351,
+          "average": 39,
+          "point": 1.44,
+          "grade": "D",
+          "rank": 14
+        }
+      ]
+    },
+    "Narsari": {
+      "subjects": [
+        {
+          "key": "c3",
+          "name": "Aviex"
+        },
+        {
+          "key": "c4",
+          "name": "evsjv"
+        },
+        {
+          "key": "c5",
+          "name": "Bs‡iRx"
+        },
+        {
+          "key": "c6",
+          "name": "MwYZ"
+        },
+        {
+          "key": "c7",
+          "name": "Kvwjgv I gvmvBj"
+        },
+        {
+          "key": "c8",
+          "name": "nvw`m kixd"
+        }
+      ],
+      "students": [
+        {
+          "roll": 1,
+          "name": "gygZvwnbv (gxg)",
+          "marks": {
+            "c3": 99,
+            "c4": 99,
+            "c5": 90,
+            "c6": 92,
+            "c7": 98,
+            "c8": 70
+          },
+          "total": 548,
+          "average": 91.33,
+          "point": 4.83,
+          "grade": "A",
+          "rank": 7
+        },
+        {
+          "roll": 2,
+          "name": "‡gvnv: nK AvbvQ",
+          "marks": {
+            "c3": 99,
+            "c4": 100,
+            "c5": 100,
+            "c6": 100,
+            "c7": 96,
+            "c8": 100
+          },
+          "total": 595,
+          "average": 99.17,
+          "point": 5,
+          "grade": "A+",
+          "rank": "1g"
+        },
+        {
+          "roll": 3,
+          "name": "Avãyjøvn Av: AvbvQ",
+          "marks": {
+            "c3": 94,
+            "c4": 90,
+            "c5": 90,
+            "c6": 93,
+            "c7": 60,
+            "c8": 45
+          },
+          "total": 472,
+          "average": 78.67,
+          "point": 4.25,
+          "grade": "A",
+          "rank": 11
+        },
+        {
+          "roll": 4,
+          "name": "Avãyj Avwjg",
+          "marks": {
+            "c3": 100,
+            "c4": 98,
+            "c5": 100,
+            "c6": 100,
+            "c7": 99,
+            "c8": 96
+          },
+          "total": 593,
+          "average": 98.83,
+          "point": 5,
+          "grade": "A+",
+          "rank": "2q"
+        },
+        {
+          "roll": 5,
+          "name": "dv‡Zgv Zvevmmyg",
+          "marks": {
+            "c3": 97,
+            "c4": 98,
+            "c5": 90,
+            "c6": 100,
+            "c7": 55,
+            "c8": 65
+          },
+          "total": 505,
+          "average": 84.17,
+          "point": 4.42,
+          "grade": "A",
+          "rank": 8
+        },
+        {
+          "roll": 6,
+          "name": "Aveivi gvngy`",
+          "marks": {
+            "c3": 97,
+            "c4": 90,
+            "c5": 80,
+            "c6": 80,
+            "c7": 80,
+            "c8": 50
+          },
+          "total": 477,
+          "average": 79.5,
+          "point": 4.67,
+          "grade": "A",
+          "rank": 10
+        },
+        {
+          "roll": 7,
+          "name": "‡gv: Avwjg`vi",
+          "marks": {
+            "c3": 97,
+            "c4": 100,
+            "c5": 97,
+            "c6": 98,
+            "c7": 100,
+            "c8": 98
+          },
+          "total": 590,
+          "average": 98.33,
+          "point": 5,
+          "grade": "A+",
+          "rank": "3q"
+        },
+        {
+          "roll": 8,
+          "name": "gvBmv RvbœvZ",
+          "marks": {
+            "c3": 96,
+            "c4": 95,
+            "c5": 85,
+            "c6": 85,
+            "c7": 99,
+            "c8": 98
+          },
+          "total": 558,
+          "average": 93,
+          "point": 5,
+          "grade": "A+",
+          "rank": 6
+        },
+        {
+          "roll": 9,
+          "name": "mvdIqvb",
+          "marks": {
+            "c3": 97,
+            "c4": 98,
+            "c5": 100,
+            "c6": 100,
+            "c7": 97,
+            "c8": 93
+          },
+          "total": 585,
+          "average": 97.5,
+          "point": 5,
+          "grade": "A+",
+          "rank": 4
+        },
+        {
+          "roll": 10,
+          "name": "ivBqvb †nv‡mb",
+          "marks": {
+            "c3": 94,
+            "c4": 85,
+            "c5": 80,
+            "c6": 70,
+            "c7": 80,
+            "c8": 80
+          },
+          "total": 489,
+          "average": 81.5,
+          "point": 4.83,
+          "grade": "A",
+          "rank": 9
+        },
+        {
+          "roll": 11,
+          "name": "Imgvb MwY",
+          "marks": {
+            "c3": 96,
+            "c4": 95,
+            "c5": 80,
+            "c6": 90,
+            "c7": 45,
+            "c8": 40
+          },
+          "total": 446,
+          "average": 74.33,
+          "point": 4,
+          "grade": "A",
+          "rank": 12
+        },
+        {
+          "roll": 12,
+          "name": "Avwdmv Zvev”Qzg",
+          "marks": {
+            "c3": "*",
+            "c4": "*",
+            "c5": "*",
+            "c6": "*",
+            "c7": "*",
+            "c8": "*"
+          },
+          "total": null,
+          "average": null,
+          "point": null,
+          "grade": null,
+          "rank": null
+        },
+        {
+          "roll": 13,
+          "name": "Avãyjøvn Av: AvbvQ",
+          "marks": {
+            "c3": "*",
+            "c4": "*",
+            "c5": "*",
+            "c6": "*",
+            "c7": "*",
+            "c8": "*"
+          },
+          "total": null,
+          "average": null,
+          "point": null,
+          "grade": null,
+          "rank": null
+        },
+        {
+          "roll": 12,
+          "name": "mv‡qg Avjdv",
+          "marks": {
+            "c3": 96,
+            "c4": 95,
+            "c5": 98,
+            "c6": 98,
+            "c7": 99,
+            "c8": 96
+          },
+          "total": 582,
+          "average": 97,
+          "point": 5,
+          "grade": "A+",
+          "rank": 5
+        }
+      ]
+    },
+    "Hifz": {
+      "subjects": [
+        {
+          "key": "c3",
+          "name": "KziAvb gvwR`"
+        },
+        {
+          "key": "c4",
+          "name": "ZvRex`"
+        },
+        {
+          "key": "c5",
+          "name": "‡`vqv I gvmvwqj"
+        },
+        {
+          "key": "c6",
+          "name": "Avgj I AvLjvK"
+        }
+      ],
+      "students": [
+        {
+          "roll": 1,
+          "name": "gynv. Dgv‡qi",
+          "marks": {
+            "c3": 75,
+            "c4": 88,
+            "c5": 91,
+            "c6": 90
+          },
+          "total": 344,
+          "average": 86,
+          "point": 4.75,
+          "grade": "A",
+          "rank": 6
+        },
+        {
+          "roll": 2,
+          "name": "gynv. Avãyjøvn Avj Ryev‡qi",
+          "marks": {
+            "c3": 80,
+            "c4": 90,
+            "c5": 88,
+            "c6": 85
+          },
+          "total": 343,
+          "average": 85.75,
+          "point": 5,
+          "grade": "A+",
+          "rank": 7
+        },
+        {
+          "roll": 3,
+          "name": "gynv. Avinvg fyuBqv",
+          "marks": {
+            "c3": 84,
+            "c4": 84,
+            "c5": 92,
+            "c6": 88
+          },
+          "total": 348,
+          "average": 87,
+          "point": 5,
+          "grade": "A+",
+          "rank": 4
+        },
+        {
+          "roll": 4,
+          "name": "gynv. RyevBi †nv‡mb",
+          "marks": {
+            "c3": 82,
+            "c4": 95,
+            "c5": 94,
+            "c6": 90
+          },
+          "total": 361,
+          "average": 90.25,
+          "point": 5,
+          "grade": "A+",
+          "rank": "1g"
+        },
+        {
+          "roll": 5,
+          "name": "gynv. Avãyjøvn Avj kvwnb",
+          "marks": {
+            "c3": 80,
+            "c4": 94,
+            "c5": 92,
+            "c6": 84
+          },
+          "total": 350,
+          "average": 87.5,
+          "point": 5,
+          "grade": "A+",
+          "rank": "2q"
+        },
+        {
+          "roll": 6,
+          "name": "gynv. kvwnb DÏxb",
+          "marks": {
+            "c3": 78,
+            "c4": 91,
+            "c5": 88,
+            "c6": 80
+          },
+          "total": 337,
+          "average": 84.25,
+          "point": 4.75,
+          "grade": "A",
+          "rank": 10
+        },
+        {
+          "roll": 7,
+          "name": "gynv. Avwmd DÏxb",
+          "marks": {
+            "c3": 75,
+            "c4": 91,
+            "c5": 86,
+            "c6": 90
+          },
+          "total": 342,
+          "average": 85.5,
+          "point": 4.75,
+          "grade": "A",
+          "rank": 8
+        },
+        {
+          "roll": 8,
+          "name": "gynv. b~i bex Avwiqvb",
+          "marks": {
+            "c3": 60,
+            "c4": 91,
+            "c5": 75,
+            "c6": 75
+          },
+          "total": 301,
+          "average": 75.25,
+          "point": 4.13,
+          "grade": "A",
+          "rank": 16
+        },
+        {
+          "roll": 9,
+          "name": "gynv. AvQjvg DÏxb",
+          "marks": {
+            "c3": 78,
+            "c4": 92,
+            "c5": 90,
+            "c6": 86
+          },
+          "total": 346,
+          "average": 86.5,
+          "point": 4.75,
+          "grade": "A",
+          "rank": 5
+        },
+        {
+          "roll": 10,
+          "name": "gvngy` AvDmvd w`nvb",
+          "marks": {},
+          "total": null,
+          "average": null,
+          "point": null,
+          "grade": null,
+          "rank": "1g"
+        },
+        {
+          "roll": 11,
+          "name": "gynv. Bgvg †nv‡mb",
+          "marks": {
+            "c3": 70,
+            "c4": 85,
+            "c5": 75,
+            "c6": 70
+          },
+          "total": 300,
+          "average": 75,
+          "point": 4.25,
+          "grade": "A",
+          "rank": 17
+        },
+        {
+          "roll": 12,
+          "name": "gynv. †mŠif †nv‡mb",
+          "marks": {
+            "c3": 80,
+            "c4": 86,
+            "c5": 88,
+            "c6": 87
+          },
+          "total": 341,
+          "average": 85.25,
+          "point": 5,
+          "grade": "A+",
+          "rank": 9
+        },
+        {
+          "roll": 13,
+          "name": "gynv. Avãyjøvn Avj mv‡qg",
+          "marks": {},
+          "total": null,
+          "average": null,
+          "point": null,
+          "grade": null,
+          "rank": "1g"
+        },
+        {
+          "roll": 14,
+          "name": "gynv. mvdIqvb Bmjvg",
+          "marks": {
+            "c3": 82,
+            "c4": 90,
+            "c5": 95,
+            "c6": 82
+          },
+          "total": 349,
+          "average": 87.25,
+          "point": 5,
+          "grade": "A+",
+          "rank": "3q"
+        },
+        {
+          "roll": 15,
+          "name": "gynv. Av`bvbyj Kixg",
+          "marks": {
+            "c3": 75,
+            "c4": 78,
+            "c5": 84,
+            "c6": 70
+          },
+          "total": 307,
+          "average": 76.75,
+          "point": 4.25,
+          "grade": "A",
+          "rank": 14
+        },
+        {
+          "roll": 16,
+          "name": "gynv. gwbiæj Bmjvg mvweZ",
+          "marks": {
+            "c3": 60,
+            "c4": 65,
+            "c5": 77,
+            "c6": 80
+          },
+          "total": 282,
+          "average": 70.5,
+          "point": 4,
+          "grade": "A",
+          "rank": 20
+        },
+        {
+          "roll": 17,
+          "name": "gynv. Avãyi ingvb",
+          "marks": {
+            "c3": 55,
+            "c4": 94,
+            "c5": 80,
+            "c6": 85
+          },
+          "total": 314,
+          "average": 78.5,
+          "point": 4.5,
+          "grade": "A",
+          "rank": 13
+        },
+        {
+          "roll": 18,
+          "name": "gynv. RybvB` †nv‡mb",
+          "marks": {
+            "c3": 40,
+            "c4": 90,
+            "c5": 65,
+            "c6": 68
+          },
+          "total": 263,
+          "average": 65.75,
+          "point": 3.5,
+          "grade": "A-",
+          "rank": 24
+        },
+        {
+          "roll": 19,
+          "name": "gynv. Avey mvC`",
+          "marks": {
+            "c3": 48,
+            "c4": 92,
+            "c5": 84,
+            "c6": 77
+          },
+          "total": 301,
+          "average": 75.25,
+          "point": 4,
+          "grade": "A",
+          "rank": 16
+        },
+        {
+          "roll": 20,
+          "name": "gynv. jvexe web mvBdyj",
+          "marks": {
+            "c3": 50,
+            "c4": 93,
+            "c5": 86,
+            "c6": 74
+          },
+          "total": 303,
+          "average": 75.75,
+          "point": 4.25,
+          "grade": "A",
+          "rank": 15
+        },
+        {
+          "roll": 21,
+          "name": "gy&nv. Avey g~mv",
+          "marks": {
+            "c3": 48,
+            "c4": 80,
+            "c5": 70,
+            "c6": 72
+          },
+          "total": 270,
+          "average": 67.5,
+          "point": 3.75,
+          "grade": "A-",
+          "rank": 23
+        },
+        {
+          "roll": 22,
+          "name": "gynv. bynvb Kixg",
+          "marks": {
+            "c3": 68,
+            "c4": 84,
+            "c5": 87,
+            "c6": 84
+          },
+          "total": 323,
+          "average": 80.75,
+          "point": 4.63,
+          "grade": "A",
+          "rank": 11
+        },
+        {
+          "roll": 23,
+          "name": "gynv. kvnv`vZ †nv‡mb",
+          "marks": {
+            "c3": 70,
+            "c4": 88,
+            "c5": 75,
+            "c6": 82
+          },
+          "total": 315,
+          "average": 78.75,
+          "point": 4.5,
+          "grade": "A",
+          "rank": 12
+        },
+        {
+          "roll": 24,
+          "name": "gynv. iweDj †nv‡mb",
+          "marks": {
+            "c3": 70,
+            "c4": 70,
+            "c5": 72,
+            "c6": 68
+          },
+          "total": 280,
+          "average": 70,
+          "point": 3.88,
+          "grade": "A-",
+          "rank": 21
+        },
+        {
+          "roll": 25,
+          "name": "gynv. mvweŸi †nv‡mb",
+          "marks": {
+            "c3": 68,
+            "c4": 50,
+            "c5": 65,
+            "c6": 60
+          },
+          "total": 243,
+          "average": 60.75,
+          "point": 3.38,
+          "grade": "B",
+          "rank": 25
+        },
+        {
+          "roll": 26,
+          "name": "gynv. myjvBgvb",
+          "marks": {
+            "c3": 60,
+            "c4": 80,
+            "c5": 70,
+            "c6": 69
+          },
+          "total": 279,
+          "average": 69.75,
+          "point": 4,
+          "grade": "A",
+          "rank": 22
+        },
+        {
+          "roll": 27,
+          "name": "gynv. Avãyj gywgb",
+          "marks": {
+            "c3": 60,
+            "c4": 84,
+            "c5": 75,
+            "c6": 75
+          },
+          "total": 294,
+          "average": 73.5,
+          "point": 4.13,
+          "grade": "A",
+          "rank": 19
+        },
+        {
+          "roll": 28,
+          "name": "gynv. Dgv‡qi nvmvb",
+          "marks": {
+            "c3": 60,
+            "c4": 82,
+            "c5": 78,
+            "c6": 78
+          },
+          "total": 298,
+          "average": 74.5,
+          "point": 4.13,
+          "grade": "A",
+          "rank": 18
+        }
+      ]
+    }
+  }
+}
