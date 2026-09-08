@@ -35,7 +35,11 @@ function searchClass(){
   const cls=$("classSelect2").value;
   if(!cls){$("result").innerHTML='<div class="message">দয়া করে শ্রেণি নির্বাচন করুন।</div>';return}
   const arr=[...DATA.classes[cls].students].sort((a,b)=>{
-    const ra=String(a.rank||""), rb=String(b.rank||""); return Number(a.rank||999)-Number(b.rank||999)
+    const ta=Number(a.total); const tb=Number(b.total);
+    if(Number.isFinite(ta) && Number.isFinite(tb)) return tb-ta;
+    if(Number.isFinite(ta)) return -1;
+    if(Number.isFinite(tb)) return 1;
+    return Number(a.roll||999)-Number(b.roll||999);
   });
   let rows=arr.map((s,i)=>`<tr><td>${bnDigits(i+1)}</td><td>${bnDigits(s.roll)}</td><td style="text-align:left">${esc(s.name)}</td><td>${esc(s.total??"—")}</td><td>${esc(s.average??"—")}</td><td>${esc(s.point??"—")}</td><td>${esc(s.grade??"—")}</td><td>${esc(s.rank??"—")}</td></tr>`).join("");
   $("result").innerHTML=`<div class="result-card"><div class="student-head"><div><h2>${esc(classMap[cls]||cls)} — ফলাফল</h2><div class="muted">${esc(DATA.year)} · ${esc(DATA.exam)}</div></div></div><div class="table-wrap"><table><thead><tr><th>ক্রম</th><th>রোল</th><th>শিক্ষার্থীর নাম</th><th>মোট</th><th>গড়</th><th>পয়েন্ট</th><th>গ্রেড</th><th>অবস্থান</th></tr></thead><tbody>${rows}</tbody></table></div></div>`;
