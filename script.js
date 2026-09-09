@@ -13,6 +13,9 @@ const classYear = document.getElementById("classYear");
 const classWiseExam = document.getElementById("classWiseExam");
 const classWiseName = document.getElementById("classWiseName");
 const classWiseResult = document.getElementById("classWiseResult");
+const aplusPanel = document.getElementById("aplusPanel");
+const aplusResult = document.getElementById("aplusResult");
+const aplusMeta = document.getElementById("aplusMeta");
 const menu = document.getElementById("mobileMenu");
 const overlay = document.getElementById("menuOverlay");
 
@@ -159,6 +162,65 @@ form.addEventListener("reset",()=>setTimeout(()=>{
   resetPersonal(true); message.className="message hidden"; resultArea.classList.add("hidden");
 },0));
 
+function showAPlusList(){
+  const list=students
+    .filter(s=>String(s.grade||"").trim().toUpperCase()==="A+")
+    .slice()
+    .sort((a,b)=>{
+      const ta=Number(a.total)||0, tb=Number(b.total)||0;
+      if(tb!==ta) return tb-ta;
+      const ya=Number(a.year)||0, yb=Number(b.year)||0;
+      if(yb!==ya) return yb-ya;
+      return String(a.classBn||a.className||"").localeCompare(String(b.classBn||b.className||""));
+    });
+
+  if(!list.length){
+    aplusMeta.textContent="";
+    aplusResult.innerHTML='<div class="classwise-empty">এখনো কোনো এ প্লাস প্রাপ্ত পরীক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
+    aplusPanel.classList.remove("hidden");
+    return;
+  }
+
+  const years=unique(list.map(s=>String(s.year||""))).filter(Boolean);
+  const exams=unique(list.map(s=>String(s.examBn||s.exam||""))).filter(Boolean);
+  aplusMeta.innerHTML=`
+    <span>মোট এ প্লাস প্রাপ্ত: <b>${bnNum(list.length)}</b> জন</span>
+    ${years.length?`<span>শিক্ষাবর্ষ: <b>${esc(years.join(", "))}</b></span>`:""}
+    ${exams.length?`<span>পরীক্ষা: <b>${esc(exams.join(" / "))}</b></span>`:""}
+  `;
+
+  const rows=list.map((s,i)=>`
+    <tr>
+      <td>${bnNum(i+1)}</td>
+      <td>${bnNum(s.roll)}</td>
+      <td class="aplus-student-name">${esc(s.name||"—")}</td>
+      <td>${esc(s.classBn||s.className||"—")}</td>
+      <td>${s.total==null?"—":bnNum(s.total)}</td>
+      <td>${s.point==null?"—":bnNum(Number(s.point).toFixed(2))}</td>
+      <td><strong class="aplus-grade">${esc(s.grade||"A+")}</strong></td>
+      <td>${typeof s.rank==="number"?bnNum(s.rank):esc(s.rank||"—")}</td>
+    </tr>`).join("");
+
+  aplusResult.innerHTML=`
+    <table class="aplus-table">
+      <thead>
+        <tr>
+          <th>ক্রমিক নং</th>
+          <th>রোল নম্বর</th>
+          <th>পরীক্ষার্থীর নাম</th>
+          <th>শ্রেণী</th>
+          <th>মোট নম্বর</th>
+          <th>পয়েন্ট</th>
+          <th>গ্রেড</th>
+          <th>অবস্থান</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+  aplusPanel.classList.remove("hidden");
+  aplusPanel.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
 function showClassWiseResult(){
   const y=classYear.value, ev=classWiseExam.value, c=classWiseName.value;
   classWiseResult.classList.add("hidden");
@@ -233,7 +295,7 @@ function showClassWiseResult(){
   classWiseResult.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-function openPrintWindow(htmlContent,title){
+function openPrintWindow(htmlContent,title,orientation="portrait"){
   const win=window.open("", "_blank");
   if(!win){
     // Popup blocked হলে স্বাভাবিক print fallback।
@@ -253,7 +315,7 @@ function openPrintWindow(htmlContent,title){
 <title>${esc(title)}</title>
 ${links}
 <style>
-@page{size:A4 portrait;margin:8mm}
+@page{size:A4 ${orientation};margin:8mm}
 @page classwisePage{size:A4 landscape;margin:7mm}
 html,body{background:#fff!important;color:#111!important;margin:0!important;padding:0!important}
 body{font-family:'Noto Sans Bengali',Arial,sans-serif!important}
@@ -290,7 +352,12 @@ function printResultArea(){
 
 function printClassWiseResult(){
   if(!classWiseResult || classWiseResult.classList.contains("hidden")) return;
-  openPrintWindow(classWiseResult.innerHTML,"শ্রেণিভিত্তিক ফলাফল");
+  openPrintWindow(classWiseResult.innerHTML,"শ্রেণিভিত্তিক ফলাফল","landscape");
+}
+
+function printAPlusResult(){
+  if(!aplusPanel || aplusPanel.classList.contains("hidden")) return;
+  openPrintWindow(aplusPanel.innerHTML,"বৃত্তিপ্রাপ্ত বা এ প্লাস প্রাপ্ত পরীক্ষার্থীদের তালিকা","landscape");
 }
 
 document.getElementById("classWiseForm").addEventListener("submit",e=>{
@@ -307,15 +374,21 @@ document.getElementById("classWiseForm").addEventListener("submit",e=>{
 document.querySelectorAll("[data-view]").forEach(link=>link.addEventListener("click",e=>{
   e.preventDefault();
   const view=link.dataset.view;
+
+  personalPanel.classList.add("hidden");
+  classPanel.classList.add("hidden");
+  aplusPanel.classList.add("hidden");
+  resultArea.classList.add("hidden");
+
   if(view==="personal"){
     personalPanel.classList.remove("hidden");
-    classPanel.classList.add("hidden");
-  }else{
-    personalPanel.classList.add("hidden");
+  }else if(view==="classwise"){
     classPanel.classList.remove("hidden");
+  }else if(view==="aplus"){
+    showAPlusList();
   }
+
   closeMenu();
-  resultArea.classList.add("hidden");
   window.scrollTo({top:0,behavior:"smooth"});
 }));
 

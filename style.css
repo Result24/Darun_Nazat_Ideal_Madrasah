@@ -182,13 +182,58 @@ footer{
   .contact-items{margin-top:15px}
 }
 
+
+.aplus-card{margin-top:25px;overflow:hidden}
+.aplus-header{
+  background:var(--green);color:#fff;padding:24px 20px;
+  display:flex;align-items:center;justify-content:center;gap:15px;text-align:center;
+}
+.aplus-header img{
+  width:62px;height:62px;border-radius:50%;object-fit:contain;background:#fff;
+}
+.aplus-header h2{margin:0;font-size:25px}
+.aplus-header p{margin:4px 0 0;font-size:16px;font-weight:600}
+.aplus-meta{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+  padding:16px 20px 4px;color:var(--muted);font-size:14px;
+}
+.aplus-meta span{
+  background:var(--green-soft);border:1px solid #d5eadf;
+  border-radius:999px;padding:6px 12px;
+}
+.aplus-table-wrap{overflow-x:auto;padding:10px 20px 0}
+.aplus-table{
+  width:100%;min-width:760px;border-collapse:separate;border-spacing:0;
+  border:1px solid #d8e0dc;border-radius:14px;overflow:hidden;
+  margin:10px 0 22px;background:#fff;
+}
+.aplus-table th,.aplus-table td{
+  padding:13px 10px;border-right:1px solid #dfe5e2;border-bottom:1px solid #dfe5e2;
+  text-align:center;vertical-align:middle;
+}
+.aplus-table th{
+  background:var(--green);color:#fff;font-weight:700;white-space:nowrap;
+}
+.aplus-table tr:last-child td{border-bottom:0}
+.aplus-table th:last-child,.aplus-table td:last-child{border-right:0}
+.aplus-table tbody tr:nth-child(even){background:#f7faf8}
+.aplus-table tbody tr:hover{background:#eef8f2}
+.aplus-student-name{text-align:left!important;font-weight:600;white-space:nowrap}
+.aplus-grade{font-weight:800}
+.aplus-card .print-row{padding-bottom:25px}
+
 @media print{
   body{background:#fff}
   .top-header,.result-card,.info-card,.contact-card,footer{display:none!important}
-  #resultArea.hidden,#classWiseResult.hidden{display:none!important}
+  #resultArea.hidden,#classWiseResult.hidden,#aplusPanel.hidden{display:none!important}
   .main{padding:0}
-  .result-output{display:block!important;box-shadow:none;border:1px solid #ccc;margin:0}
+  .result-output,.aplus-card{display:block!important;box-shadow:none;border:1px solid #ccc;margin:0}
   .print-row{display:none}
+  .aplus-header{break-inside:avoid}
+  .aplus-table-wrap{overflow:visible!important;padding:8px 10px 0}
+  .aplus-table{width:100%!important;min-width:0!important;border-collapse:collapse!important;font-size:11px}
+  .aplus-table th,.aplus-table td{border:1px solid #222!important;padding:7px 5px}
+  .aplus-meta{padding:10px 0 0}
 }
 
 .select-field{position:relative}
@@ -251,6 +296,46 @@ select:disabled{background:#f3f5f4;color:#9aa2a8;cursor:not-allowed}
 
 @page personalPage{size:A4 portrait;margin:8mm}
 @page classwisePage{size:A4 landscape;margin:7mm}
+
+
+.aplus-card{margin-top:25px;overflow:hidden}
+.aplus-header{
+  background:var(--green);color:#fff;padding:24px 20px;
+  display:flex;align-items:center;justify-content:center;gap:15px;text-align:center;
+}
+.aplus-header img{
+  width:62px;height:62px;border-radius:50%;object-fit:contain;background:#fff;
+}
+.aplus-header h2{margin:0;font-size:25px}
+.aplus-header p{margin:4px 0 0;font-size:16px;font-weight:600}
+.aplus-meta{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+  padding:16px 20px 4px;color:var(--muted);font-size:14px;
+}
+.aplus-meta span{
+  background:var(--green-soft);border:1px solid #d5eadf;
+  border-radius:999px;padding:6px 12px;
+}
+.aplus-table-wrap{overflow-x:auto;padding:10px 20px 0}
+.aplus-table{
+  width:100%;min-width:760px;border-collapse:separate;border-spacing:0;
+  border:1px solid #d8e0dc;border-radius:14px;overflow:hidden;
+  margin:10px 0 22px;background:#fff;
+}
+.aplus-table th,.aplus-table td{
+  padding:13px 10px;border-right:1px solid #dfe5e2;border-bottom:1px solid #dfe5e2;
+  text-align:center;vertical-align:middle;
+}
+.aplus-table th{
+  background:var(--green);color:#fff;font-weight:700;white-space:nowrap;
+}
+.aplus-table tr:last-child td{border-bottom:0}
+.aplus-table th:last-child,.aplus-table td:last-child{border-right:0}
+.aplus-table tbody tr:nth-child(even){background:#f7faf8}
+.aplus-table tbody tr:hover{background:#eef8f2}
+.aplus-student-name{text-align:left!important;font-weight:600;white-space:nowrap}
+.aplus-grade{font-weight:800}
+.aplus-card .print-row{padding-bottom:25px}
 
 @media print{
   html,body{background:#fff!important;margin:0!important;padding:0!important}

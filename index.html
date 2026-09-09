@@ -7,18 +7,6 @@
   <meta name="description" content="দারুন নাজাত আইডিয়াল মাদরাসার পরীক্ষার ফলাফল দেখুন">
   <title>দারুন নাজাত আইডিয়াল মাদরাসা — ফলাফল</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .notice-board-new,.qr-section-new{margin-top:20px;padding:20px;border-radius:14px;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.07)}
-    .notice-board-new h3,.qr-section-new h3{margin:0 0 14px;text-align:center}
-    .notice-list-new{list-style:none;padding:0;margin:0}
-    .notice-list-new li{padding:10px 12px;margin:8px 0;border-radius:9px;background:#f4f8f6;border-left:4px solid #087f4e}
-    .qr-section-new{text-align:center}
-    .qr-section-new img{width:190px;height:190px;max-width:70vw;display:block;margin:10px auto}
-    .qr-section-new p{margin:8px 0 0;line-height:1.7}
-  
-.notice-board-new .qr-section-new{margin-top:18px;padding-top:18px;border-top:1px solid #e3ece7;box-shadow:none;background:transparent}
-
-</style>
 </head>
 <body>
   <header class="top-header">
@@ -46,7 +34,7 @@
     <div class="drawer-logo"><img src="logo.jpg" alt="মাদ্রাসার লোগো"></div>
     <a href="#personal" data-view="personal">ব্যক্তিগত ফলাফল</a>
     <a href="#classwise" data-view="classwise">ক্লাসওয়ারী ফলাফল</a>
-  <a href="#noticeBoard">নোটিশ বোর্ড</a>
+    <a href="#aplus" data-view="aplus">এ প্লাস প্রাপ্তদের তালিকা</a>
   </nav>
   <main class="container main">
     <section class="result-card" id="personalPanel">
@@ -64,7 +52,9 @@
         </div>
         <div class="field select-field">
           <label for="exam">পরীক্ষা নির্বাচন করুন <b>*</b></label>
-          <select id="exam" required><option value="">-- পরীক্ষা নির্বাচন করুন --</option></select>
+          <select id="exam" required>
+            <option value="">-- পরীক্ষা নির্বাচন করুন --</option>
+          </select>
         </div>
         <div class="field select-field">
           <label for="className">শ্রেণি নির্বাচন করুন <b>*</b></label>
@@ -98,7 +88,9 @@
         </div>
         <div class="field select-field">
           <label for="classWiseExam">পরীক্ষা নির্বাচন করুন <b>*</b></label>
-          <select id="classWiseExam" required><option value="">-- পরীক্ষা নির্বাচন করুন --</option></select>
+          <select id="classWiseExam" required>
+            <option value="">-- পরীক্ষা নির্বাচন করুন --</option>
+          </select>
         </div>
         <div class="field select-field">
           <label for="classWiseName">শ্রেণি নির্বাচন করুন <b>*</b></label>
@@ -110,7 +102,20 @@
       </form>
       <div id="classWiseResult" class="classwise-output hidden"></div>
     </section>
-
+    <section class="result-card aplus-card hidden" id="aplusPanel">
+      <div class="aplus-header">
+        <img src="logo.jpg" alt="দারুন নাজাত আইডিয়াল মাদরাসার লোগো">
+        <div>
+          <h2>দারুন নাজাত আইডিয়াল মাদরাসা</h2>
+          <p>বৃত্তিপ্রাপ্ত বা এ প্লাস প্রাপ্ত পরীক্ষার্থীদের তালিকা</p>
+        </div>
+      </div>
+      <div id="aplusMeta" class="aplus-meta"></div>
+      <div id="aplusResult" class="aplus-table-wrap"></div>
+      <div class="print-row">
+        <button class="print-btn" onclick="printAPlusResult()">🖨 তালিকা প্রিন্ট / PDF</button>
+      </div>
+    </section>
     <section id="notice" class="info-card">
       <h3>📢 ফলাফল দেখার নির্দেশনা</h3>
       <ul>
@@ -119,22 +124,6 @@
         <li>তথ্য না মিললে মাদ্রাসা কর্তৃপক্ষের সঙ্গে যোগাযোগ করুন।</li>
       </ul>
     </section>
-
-    <section id="noticeBoard" class="notice-board-new" aria-labelledby="noticeBoardTitle">
-      <h3 id="noticeBoardTitle">📢 নোটিশ বোর্ড</h3>
-      <ul class="notice-list-new">
-        <li>অনলাইনে পরীক্ষার ফলাফল দেখতে ব্যক্তিগত ফলাফল অথবা ক্লাসওয়ারী ফলাফল নির্বাচন করুন।</li>
-        <li>নতুন ফলাফল প্রকাশ হলে এই ওয়েবসাইটেই দেখা যাবে।</li>
-        <li>ফলাফল সংক্রান্ত প্রয়োজনে মাদ্রাসার মোবাইল নম্বরে যোগাযোগ করুন: 01623257140</li>
-      </ul>
-    
-
-  <h3 id="qrTitle">ওয়েবসাইটের QR Code</h3>
-      <img src="result-qrcode.png" alt="দারুন নাজাত আইডিয়াল মাদরাসার ফলাফল ওয়েবসাইটের QR Code">
-      <p>QR Code স্ক্যান করে সরাসরি ফলাফল ওয়েবসাইটে প্রবেশ করুন।</p>
-</section>
-
-    
   </main>
 
   <footer>

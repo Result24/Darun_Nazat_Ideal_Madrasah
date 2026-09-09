@@ -1,27 +1,47 @@
-দারুন নাজাত আইডিয়াল মাদরাসা — ফলাফল ওয়েবসাইট
+দারুন নাজাত আইডিয়াল মাদ্রাসা — Automatic Excel Result Website
 
-এই ZIP-টি GitHub Repository-এর মূল (root) অংশে আপলোড করার জন্য সাজানো হয়েছে।
+এই প্যাকেজটি আগের পছন্দের ওয়েবসাইট ডিজাইন/সিস্টেমের উপর ভিত্তি করে তৈরি।
+ব্যক্তিগত ফলাফল, ক্লাসওয়ারী ফলাফল, মোবাইল মেনু এবং Print/PDF ব্যবস্থা রাখা হয়েছে।
 
-ফোল্ডার কাঠামো:
-- .github/workflows/update-results.yml = Excel থেকে ফলাফল আপডেট করার GitHub Action
-- data/ = তৈরি হওয়া ফলাফল ডেটা
-- excel/ = ভবিষ্যতে নতুন Excel ফাইল এখানে আপলোড করবেন
-- excel-template/ = নমুনা/পুরোনো Excel ফাইল; এটি সরাসরি excel/ এ আপলোড করবেন না, যদি না ফাইলের নাম সঠিকভাবে বছর+পরীক্ষা বোঝায়
+AUTOMATIC EXCEL SYSTEM
+----------------------
+ভবিষ্যতে শুধু excel/ folder-এ Excel ফাইল upload করবেন।
+GitHub Actions Excel থেকে data/results.json স্বয়ংক্রিয়ভাবে তৈরি করবে।
 
-ভবিষ্যতে Excel আপলোড:
-1. Repository খুলুন
-2. excel ফোল্ডারে ঢুকুন
-3. Add file → Upload files
-4. Excel ফাইল আপলোড করুন
-5. ফাইলের নাম এই ধরনের রাখুন:
-   2026-2nd-term.xlsx
-   2027-annual.xlsx
-   2027-1st-term.xlsx
-6. Commit changes দিন
-7. GitHub Actions নিজে ফলাফল ডেটা তৈরি করবে
+Excel ফাইলের নামের নিয়ম:
+2026-1st-term.xlsx
+2026-2nd-term.xlsx
+2026-annual.xlsx
+2027-1st-term.xlsx
+ইত্যাদি।
+
+Excel-এর ভিতরের format বর্তমান 2nd Term Examination.xlsx-এর মতো রাখবেন।
+Class-1, Class-2, Class-3, Class-4, Class-5, Class-6, Narsari এবং Hifz sheet ব্যবহার করা যাবে।
+Formula_Test sheet থাকলে সেটি ফলাফলে নেওয়া হবে না।
+
+প্রথমবার GitHub-এ:
+1. ZIP খুলে সব ফাইল repository-তে upload করুন।
+2. GitHub Pages আগের মতো index.html থেকে চালু রাখুন।
+3. Settings > Actions > General-এ Workflow permissions যদি দেখা যায়, "Read and write permissions" নির্বাচন করে Save করুন (সাধারণত workflow-তেই contents: write দেওয়া আছে)।
+
+এরপর:
+1. excel/ folder খুলুন।
+2. নতুন Excel upload করুন।
+3. Commit changes দিন।
+4. Actions tab-এ "Update Result Data from Excel" workflow শেষ হওয়া পর্যন্ত অপেক্ষা করুন।
+5. কয়েক মুহূর্ত পর website refresh করুন।
+
+একই year + exam-এর Excel আবার upload করলে আগের সেই year + exam-এর data নতুন Excel দিয়ে replace হবে।
+নতুন year + exam upload করলে পুরোনো ফলাফল রেখে নতুন ফলাফল যোগ হবে।
 
 গুরুত্বপূর্ণ:
-- index.html, script.js, style.css, build_results.py, bijoy2unicode.py এবং .github/workflows ফোল্ডারের কাঠামো পরিবর্তন করবেন না।
-- result-qrcode.png ওয়েবসাইটের QR Code।
-- নোটিশ বোর্ডের ভেতরেই QR Code রাখা হয়েছে।
-- নতুন নোটিশ পরিবর্তন করতে index.html-এর নোটিশ বোর্ড অংশ পরিবর্তন করতে হবে; চাইলে নোটিশের লেখা আমাকে দিলে আমি শুধু ওই অংশ পরিবর্তন করে দিতে পারি।
+- Excel-এর নামের নিয়ম ঠিক রাখুন।
+- Excel-এর sheet/column format বর্তমান template অনুযায়ী রাখুন।
+- GitHub Pages public হলে website-এর ফলাফল public থাকবে।
+
+নতুন সংযোজন:
+- মেইন মেনুতে “এ প্লাস প্রাপ্তদের তালিকা” যোগ করা হয়েছে।
+- ফলাফল ডাটার Grade = A+ হলে পরীক্ষার্থী স্বয়ংক্রিয়ভাবে তালিকায় আসবে।
+- টেবিলে ক্রমিক নং, রোল নম্বর, পরীক্ষার্থীর নাম, শ্রেণী, মোট নম্বর, পয়েন্ট, গ্রেড ও অবস্থান দেখাবে।
+- তালিকাটি A4 ল্যান্ডস্কেপ প্রিন্ট/PDF-এর জন্য সুন্দরভাবে সাজানো হয়েছে।
+- নতুন ফলাফল ডাটায় A+ থাকলে আলাদা করে তালিকা আপডেট করার প্রয়োজন নেই; data/results.json আপডেট হলে তালিকাও আপডেট হবে।
