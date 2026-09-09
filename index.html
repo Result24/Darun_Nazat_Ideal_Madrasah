@@ -4,116 +4,137 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#087f4e">
-  <meta name="description" content="মাদ্রাসার পরীক্ষার ফলাফল দেখুন">
-  <title>দারুন নাজাত আইডিয়াল মাদ্রাসা — ফলাফল</title>
+  <meta name="description" content="দারুন নাজাত আইডিয়াল মাদরাসার পরীক্ষার ফলাফল দেখুন">
+  <title>দারুন নাজাত আইডিয়াল মাদরাসা — ফলাফল</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .notice-board-new,.qr-section-new{margin-top:20px;padding:20px;border-radius:14px;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.07)}
+    .notice-board-new h3,.qr-section-new h3{margin:0 0 14px;text-align:center}
+    .notice-list-new{list-style:none;padding:0;margin:0}
+    .notice-list-new li{padding:10px 12px;margin:8px 0;border-radius:9px;background:#f4f8f6;border-left:4px solid #087f4e}
+    .qr-section-new{text-align:center}
+    .qr-section-new img{width:190px;height:190px;max-width:70vw;display:block;margin:10px auto}
+    .qr-section-new p{margin:8px 0 0;line-height:1.7}
+  </style>
 </head>
 <body>
   <header class="top-header">
     <div class="nav container">
       <a class="brand" href="#" aria-label="হোম">
-        <div class="logo">📚</div>
+        <img class="logo" src="logo.jpg" alt="দারুন নাজাত আইডিয়াল মাদরাসার লোগো">
         <div class="brand-text">
-          <strong>দারুন নাজাত আইডিয়াল মাদ্রাসা</strong>
+          <strong>দারুন নাজাত আইডিয়াল মাদরাসা</strong>
           <span>ফলাফল প্রকাশনা</span>
         </div>
       </a>
-      <button class="menu-btn" id="menuBtn" aria-label="মেনু">☰</button>
-      <nav id="mobileMenu">
-        <a href="#search">ফলাফল</a>
-        <a href="#notice">নির্দেশনা</a>
-        <a href="#about">যোগাযোগ</a>
-      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="মেনু" aria-expanded="false">☰</button>
     </div>
-
     <div class="hero">
       <div class="container">
-        <h1>দারুন নাজাত আইডিয়াল মাদ্রাসা</h1>
-        <p>জ্ঞান, নৈতিকতা ও আদর্শ শিক্ষার সমন্বিত প্রতিষ্ঠান</p>
+        <h1>দারুন নাজাত আইডিয়াল মাদরাসা</h1>
+        <p>আবুতোরাব, মিরসরাই, চট্টগ্রাম। মোবাইল: 01623257140</p>
         <small>পরীক্ষার ফলাফল অনলাইনে দেখুন</small>
       </div>
     </div>
   </header>
-
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <nav id="mobileMenu" aria-label="মেইন মেনু">
+    <button class="menu-close" id="menuClose" aria-label="মেনু বন্ধ করুন">×</button>
+    <div class="drawer-logo"><img src="logo.jpg" alt="মাদ্রাসার লোগো"></div>
+    <a href="#personal" data-view="personal">ব্যক্তিগত ফলাফল</a>
+    <a href="#classwise" data-view="classwise">ক্লাসওয়ারী ফলাফল</a>
+  </nav>
   <main class="container main">
-    <section class="result-card" id="search">
+    <section class="result-card" id="personalPanel">
       <div class="section-title">
         <span class="title-icon">🎓</span>
         <div>
-          <h2>ফলাফল অনুসন্ধান</h2>
-          <p>তথ্য পূরণ করে ফলাফল দেখুন</p>
+          <h2>ব্যক্তিগত ফলাফল</h2>
+          <p>সাল, পরীক্ষা, শ্রেণি ও রোল নম্বর দিয়ে ফলাফল খুঁজুন</p>
         </div>
       </div>
-
       <form id="resultForm" novalidate>
         <div class="field select-field">
-          <label for="resultYear">📅 সাল নির্বাচন করুন <b>*</b></label>
-          <select id="resultYear" required>
-            <option value="">-- সাল নির্বাচন করুন --</option>
-          </select>
-          <span class="field-help">যে সালের ফলাফল দেখতে চান সেটি নির্বাচন করুন</span>
+          <label for="resultYear">সাল নির্বাচন করুন <b>*</b></label>
+          <select id="resultYear" required><option value="">-- সাল নির্বাচন করুন --</option></select>
         </div>
-
         <div class="field select-field">
-          <label for="exam">📋 পরীক্ষা নির্বাচন করুন <b>*</b></label>
-          <select id="exam" required>
-            <option value="">-- পরীক্ষা নির্বাচন করুন --</option>
-          </select>
-          <span class="field-help">যে পরীক্ষার ফলাফল দেখতে চান সেটি নির্বাচন করুন</span>
+          <label for="exam">পরীক্ষা নির্বাচন করুন <b>*</b></label>
+          <select id="exam" required><option value="">-- পরীক্ষা নির্বাচন করুন --</option></select>
         </div>
-
         <div class="field select-field">
-          <label for="className">🎓 শ্রেণি নির্বাচন করুন <b>*</b></label>
-          <select id="className" required disabled>
-            <option value="">-- আগে পরীক্ষা নির্বাচন করুন --</option>
-          </select>
-          <span class="field-help" id="classHelp">প্রথমে পরীক্ষা নির্বাচন করুন</span>
+          <label for="className">শ্রেণি নির্বাচন করুন <b>*</b></label>
+          <select id="className" required disabled><option value="">-- আগে সাল নির্বাচন করুন --</option></select>
+          <span class="field-help" id="classHelp">প্রথমে সাল নির্বাচন করুন</span>
         </div>
-
         <div class="field">
-          <label for="roll">রোল নম্বর <b>*</b></label>
-          <input id="roll" type="text" inputmode="numeric" placeholder="যেমন: 101" required>
+          <label for="roll">রোল নম্বর (ইংরেজিতে লিখুন) <b>*</b></label>
+          <input id="roll" type="text" inputmode="numeric" placeholder="XXXXXX" required>
         </div>
-
         <div class="actions">
-          <button type="reset" class="btn btn-light">↻ পুনরায় সেট করুন</button>
-          <button type="submit" class="btn btn-primary">🔎 অনুসন্ধান করুন</button>
+          <button type="reset" class="btn btn-light">পুনরায় সেট করুন</button>
+          <button type="submit" class="btn btn-primary">অনুসন্ধান করুন</button>
         </div>
       </form>
-
       <div id="message" class="message hidden"></div>
     </section>
-
     <section id="resultArea" class="result-output hidden"></section>
+    <section class="result-card hidden" id="classPanel">
+      <div class="section-title">
+        <span class="title-icon">📚</span>
+        <div>
+          <h2>ক্লাসওয়ারী ফলাফল</h2>
+          <p>শুধু সাল ও শ্রেণি নির্বাচন করে পুরো ক্লাসের ফলাফল দেখুন</p>
+        </div>
+      </div>
+      <form id="classWiseForm" novalidate>
+        <div class="field select-field">
+          <label for="classYear">সাল নির্বাচন করুন <b>*</b></label>
+          <select id="classYear" required><option value="">-- সাল নির্বাচন করুন --</option></select>
+        </div>
+        <div class="field select-field">
+          <label for="classWiseExam">পরীক্ষা নির্বাচন করুন <b>*</b></label>
+          <select id="classWiseExam" required><option value="">-- পরীক্ষা নির্বাচন করুন --</option></select>
+        </div>
+        <div class="field select-field">
+          <label for="classWiseName">শ্রেণি নির্বাচন করুন <b>*</b></label>
+          <select id="classWiseName" required disabled><option value="">-- আগে সাল নির্বাচন করুন --</option></select>
+        </div>
+        <div class="actions single-action">
+          <button type="submit" class="btn btn-primary">ফলাফল দেখুন</button>
+        </div>
+      </form>
+      <div id="classWiseResult" class="classwise-output hidden"></div>
+    </section>
 
     <section id="notice" class="info-card">
       <h3>📢 ফলাফল দেখার নির্দেশনা</h3>
       <ul>
-        <li>প্রথমে সাল, তারপর পরীক্ষা ও শ্রেণি নির্বাচন করুন।</li>
-        <li>রোল নম্বর ইংরেজি সংখ্যায় লিখুন।</li>
+        <li>ব্যক্তিগত ফলাফলের জন্য সাল, পরীক্ষা, শ্রেণি ও রোল নম্বর নির্বাচন করুন।</li>
+        <li>ক্লাসওয়ারী ফলাফলের জন্য শুধু সাল ও শ্রেণি নির্বাচন করুন।</li>
         <li>তথ্য না মিললে মাদ্রাসা কর্তৃপক্ষের সঙ্গে যোগাযোগ করুন।</li>
       </ul>
     </section>
 
-    <section id="about" class="contact-card">
-      <div>
-        <h3>যোগাযোগ</h3>
-        <p>মাদ্রাসার অফিসে যোগাযোগ করুন</p>
-      </div>
-      <div class="contact-items">
-        <a href="tel:01623257140">📞 01623257140</a>
-        <span>📍 আবুতোরাব, মিরসরাই, চট্টগ্রাম</span>
-      </div>
+    <section class="notice-board-new" aria-labelledby="noticeBoardTitle">
+      <h3 id="noticeBoardTitle">📢 নোটিশ বোর্ড</h3>
+      <ul class="notice-list-new">
+        <li>অনলাইনে পরীক্ষার ফলাফল দেখতে ব্যক্তিগত ফলাফল অথবা ক্লাসওয়ারী ফলাফল নির্বাচন করুন।</li>
+        <li>নতুন ফলাফল প্রকাশ হলে এই ওয়েবসাইটেই দেখা যাবে।</li>
+        <li>ফলাফল সংক্রান্ত প্রয়োজনে মাদ্রাসার মোবাইল নম্বরে যোগাযোগ করুন: 01623257140</li>
+      </ul>
+    </section>
+
+    <section class="qr-section-new" aria-labelledby="qrTitle">
+      <h3 id="qrTitle">ওয়েবসাইটের QR Code</h3>
+      <img src="result-qrcode.png" alt="দারুন নাজাত আইডিয়াল মাদরাসার ফলাফল ওয়েবসাইটের QR Code">
+      <p>QR Code স্ক্যান করে সরাসরি ফলাফল ওয়েবসাইটে প্রবেশ করুন।</p>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      © <span id="year"></span> দারুন নাজাত আইডিয়াল মাদ্রাসা
-      <div class="footer-sub">সকল অধিকার সংরক্ষিত</div>
-    </div>
+    <div class="container">© <span id="year"></span> দারুন নাজাত আইডিয়াল মাদরাসা<div class="footer-sub">সকল অধিকার সংরক্ষিত</div></div>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>

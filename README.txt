@@ -1,9 +1,8 @@
-দারুন নাজাত আইডিয়াল মাদ্রাসা — ফলাফল ওয়েবসাইট
+দারুন নাজাত আইডিয়াল মাদরাসা — নোটিশ বোর্ড + QR Code
 
-এই প্যাকেজে প্রথম সাময়িক পরীক্ষা ও দ্বিতীয় সাময়িক পরীক্ষা—দুই পরীক্ষার ফলাফল রাখা হয়েছে।
+এই প্যাকেজে শুধু index.html-এ নোটিশ বোর্ড ও QR Code যোগ করা হয়েছে এবং result-qrcode.png দেওয়া হয়েছে।
+বর্তমান ফলাফল, script.js, data, Excel/build workflow ও print system পরিবর্তন করা হয়নি।
 
-দ্বিতীয় সাময়িক পরীক্ষার উৎস: 2nd Term Examination.xlsx
-শ্রেণি: Class-1 থেকে Class-6, Narsari এবং Hifz।
-পরীক্ষা ও শ্রেণির dropdown থেকে নির্বাচন করে রোল নম্বর দিয়ে ফলাফল দেখা যাবে।
-
-Netlify/GitHub: index.html, style.css, script.js এবং madrasa_result_data.json আপলোড করলেই সাইট চলবে।
+GitHub-এ আপলোড করতে:
+1) index.html দিয়ে পুরোনো index.html Replace করুন
+2) result-qrcode.png ফাইলটি Repository-এর root-এ Upload করুন
