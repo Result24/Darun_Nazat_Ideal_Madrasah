@@ -15,7 +15,10 @@
     .qr-section-new{text-align:center}
     .qr-section-new img{width:190px;height:190px;max-width:70vw;display:block;margin:10px auto}
     .qr-section-new p{margin:8px 0 0;line-height:1.7}
-  </style>
+  
+.notice-board-new .qr-section-new{margin-top:18px;padding-top:18px;border-top:1px solid #e3ece7;box-shadow:none;background:transparent}
+
+</style>
 </head>
 <body>
   <header class="top-header">
@@ -43,6 +46,7 @@
     <div class="drawer-logo"><img src="logo.jpg" alt="মাদ্রাসার লোগো"></div>
     <a href="#personal" data-view="personal">ব্যক্তিগত ফলাফল</a>
     <a href="#classwise" data-view="classwise">ক্লাসওয়ারী ফলাফল</a>
+  <a href="#noticeBoard">নোটিশ বোর্ড</a>
   </nav>
   <main class="container main">
     <section class="result-card" id="personalPanel">
@@ -116,20 +120,21 @@
       </ul>
     </section>
 
-    <section class="notice-board-new" aria-labelledby="noticeBoardTitle">
+    <section id="noticeBoard" class="notice-board-new" aria-labelledby="noticeBoardTitle">
       <h3 id="noticeBoardTitle">📢 নোটিশ বোর্ড</h3>
       <ul class="notice-list-new">
         <li>অনলাইনে পরীক্ষার ফলাফল দেখতে ব্যক্তিগত ফলাফল অথবা ক্লাসওয়ারী ফলাফল নির্বাচন করুন।</li>
         <li>নতুন ফলাফল প্রকাশ হলে এই ওয়েবসাইটেই দেখা যাবে।</li>
         <li>ফলাফল সংক্রান্ত প্রয়োজনে মাদ্রাসার মোবাইল নম্বরে যোগাযোগ করুন: 01623257140</li>
       </ul>
-    </section>
+    
 
-    <section class="qr-section-new" aria-labelledby="qrTitle">
-      <h3 id="qrTitle">ওয়েবসাইটের QR Code</h3>
+  <h3 id="qrTitle">ওয়েবসাইটের QR Code</h3>
       <img src="result-qrcode.png" alt="দারুন নাজাত আইডিয়াল মাদরাসার ফলাফল ওয়েবসাইটের QR Code">
       <p>QR Code স্ক্যান করে সরাসরি ফলাফল ওয়েবসাইটে প্রবেশ করুন।</p>
-    </section>
+</section>
+
+    
   </main>
 
   <footer>
