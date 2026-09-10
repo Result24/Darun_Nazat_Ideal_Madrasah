@@ -34,7 +34,7 @@
     <div class="drawer-logo"><img src="logo.jpg" alt="মাদ্রাসার লোগো"></div>
     <a href="#personal" data-view="personal">ব্যক্তিগত ফলাফল</a>
     <a href="#classwise" data-view="classwise">ক্লাসওয়ারী ফলাফল</a>
-    <a href="#aplus" data-view="aplus">A+ প্রাপ্তদের তালিকা</a>
+    <a href="#aplus" data-view="aplus">A+ ও মেধা তালিকা</a>
   </nav>
   <main class="container main">
     <section class="result-card" id="personalPanel">
@@ -103,16 +103,39 @@
       <div id="classWiseResult" class="classwise-output hidden"></div>
     </section>
     <section class="result-card aplus-card hidden" id="aplusPanel">
-      <div class="aplus-header">
-        <img src="logo.jpg" alt="দারুন নাজাত আইডিয়াল মাদরাসার লোগো">
+      <div class="section-title">
+        <span class="title-icon">🏆</span>
         <div>
-          <h2>দারুন নাজাত আইডিয়াল মাদরাসা</h2>
-          <p>বৃত্তিপ্রাপ্ত বা A+ প্রাপ্ত পরীক্ষার্থীদের তালিকা</p>
+          <h2>A+ ও মেধা তালিকা</h2>
+          <p>তালিকা, সাল ও পরীক্ষা নির্বাচন করে তালিকা দেখুন</p>
         </div>
       </div>
+      <form id="listForm" novalidate>
+        <div class="field select-field">
+          <label for="listType">তালিকা নির্বাচন করুন <b>*</b></label>
+          <select id="listType" required>
+            <option value="">-- তালিকা নির্বাচন করুন --</option>
+            <option value="aplus">A+ প্রাপ্তদের তালিকা</option>
+            <option value="merit">মেধা তালিকা</option>
+          </select>
+        </div>
+        <div class="field select-field">
+          <label for="listYear">সাল নির্বাচন করুন <b>*</b></label>
+          <select id="listYear" required><option value="">-- সাল নির্বাচন করুন --</option></select>
+        </div>
+        <div class="field select-field">
+          <label for="listExam">পরীক্ষা নির্বাচন করুন <b>*</b></label>
+          <select id="listExam" required>
+            <option value="">-- পরীক্ষা নির্বাচন করুন --</option>
+          </select>
+        </div>
+        <div class="actions single-action">
+          <button type="submit" class="btn btn-primary">অনুসন্ধান করুন</button>
+        </div>
+      </form>
       <div id="aplusMeta" class="aplus-meta"></div>
-      <div id="aplusResult" class="aplus-table-wrap"></div>
-      <div class="print-row">
+      <div id="aplusResult" class="aplus-table-wrap hidden"></div>
+      <div class="print-row hidden" id="listPrintRow">
         <button class="print-btn" onclick="printAPlusResult()">🖨 তালিকা প্রিন্ট / PDF</button>
       </div>
     </section>

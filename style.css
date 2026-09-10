@@ -503,3 +503,10 @@ select:disabled{background:#f3f5f4;color:#9aa2a8;cursor:not-allowed}
   .personal-print-sheet .result-table.print-result-table{break-inside:auto}
   .personal-print-sheet .result-table.print-result-table tr{break-inside:avoid}
 }
+
+/* A+ / merit list search form */
+.aplus-card .section-title{margin-bottom:20px}
+.aplus-card .section-title .title-icon{font-size:28px}
+.aplus-card #listForm{padding:0 20px 4px}
+.aplus-card .aplus-table-wrap.hidden{display:none}
+.aplus-card .print-row.hidden{display:none}

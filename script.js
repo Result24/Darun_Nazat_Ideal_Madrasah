@@ -17,6 +17,11 @@ const classWiseResult = document.getElementById("classWiseResult");
 const aplusPanel = document.getElementById("aplusPanel");
 const aplusResult = document.getElementById("aplusResult");
 const aplusMeta = document.getElementById("aplusMeta");
+const listForm = document.getElementById("listForm");
+const listType = document.getElementById("listType");
+const listYear = document.getElementById("listYear");
+const listExam = document.getElementById("listExam");
+const listPrintRow = document.getElementById("listPrintRow");
 const menu = document.getElementById("mobileMenu");
 const overlay = document.getElementById("menuOverlay");
 
@@ -71,6 +76,8 @@ function loadYears(){
   const years=getYears().map(y=>({value:y,label:bnNum(y)}));
   fillSelect(yearSelect,years,"-- সাল নির্বাচন করুন --");
   fillSelect(classYear,years,"-- সাল নির্বাচন করুন --");
+  fillSelect(listYear,years,"-- সাল নির্বাচন করুন --");
+  fillSelect(listExam,examOptions,"-- পরীক্ষা নির্বাচন করুন --");
   resetPersonal(false);
   resetClassWise(false);
 }
@@ -164,60 +171,92 @@ form.addEventListener("reset",()=>setTimeout(()=>{
   resetPersonal(true); message.className="message hidden"; resultArea.classList.add("hidden");
 },0));
 
-function showAPlusList(){
-  const list=students
-    .filter(s=>String(s.grade||"").trim().toUpperCase()==="A+")
-    .slice()
-    .sort((a,b)=>{
-      const ta=Number(a.total)||0, tb=Number(b.total)||0;
-      if(tb!==ta) return tb-ta;
-      const ya=Number(a.year)||0, yb=Number(b.year)||0;
-      if(yb!==ya) return yb-ya;
-      return String(a.classBn||a.className||"").localeCompare(String(b.classBn||b.className||""));
-    });
+function resetListForm(){
+  listType.value="";
+  listYear.value="";
+  fillSelect(listExam,examOptions,"-- পরীক্ষা নির্বাচন করুন --");
+  listExam.value="";
+  aplusMeta.innerHTML="";
+  aplusResult.innerHTML="";
+  aplusResult.classList.add("hidden");
+  listPrintRow.classList.add("hidden");
+}
+
+function showListResult(){
+  const type=listType.value, y=listYear.value, ev=listExam.value;
+  aplusMeta.innerHTML="";
+  aplusResult.innerHTML="";
+  aplusResult.classList.add("hidden");
+  listPrintRow.classList.add("hidden");
+  if(!type||!y||!ev) return;
+
+  const base=students.filter(s=>String(s.year||"")===String(y)&&s.exam===ev);
+  let list=[];
+  if(type==="aplus"){
+    list=base.filter(s=>String(s.grade||"").trim().toUpperCase()==="A+")
+      .sort((a,b)=>{
+        const aa=Number(a.average)||0, ab=Number(b.average)||0;
+        if(ab!==aa) return ab-aa;
+        return (Number(b.total)||0)-(Number(a.total)||0);
+      });
+  }else{
+    // মেধা তালিকায় শ্রেণিভেদে মোট নম্বর আলাদা হতে পারে, তাই গড় নম্বরকে
+    // মূল মানদণ্ড হিসেবে ব্যবহার করা হয়েছে; সমান গড়ে মোট নম্বর দিয়ে সাজানো হয়।
+    list=base.filter(s=>typeof s.average==='number' && isFinite(s.average) && s.grade!=="অনুপস্থিত")
+      .sort((a,b)=>{
+        const aa=Number(a.average)||0, ab=Number(b.average)||0;
+        if(ab!==aa) return ab-aa;
+        const ta=Number(a.total)||0, tb=Number(b.total)||0;
+        if(tb!==ta) return tb-ta;
+        return String(a.name||"").localeCompare(String(b.name||""),'bn');
+      });
+  }
+
+  const title=type==="aplus" ? "A+ প্রাপ্তদের তালিকা" : "মেধা তালিকা";
+  aplusMeta.innerHTML=`
+    <span>${title}: <b>${bnNum(list.length)}</b> জন</span>
+    <span>শিক্ষাবর্ষ: <b>${bnNum(y)}</b></span>
+    <span>পরীক্ষা: <b>${esc((base[0]?.examBn)||ev)}</b></span>`;
 
   if(!list.length){
-    aplusMeta.textContent="";
-    aplusResult.innerHTML='<div class="classwise-empty">এখনো কোনো A+ প্রাপ্ত পরীক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
-    aplusPanel.classList.remove("hidden");
+    aplusResult.innerHTML=`<div class="classwise-empty">দুঃখিত! নির্বাচিত সাল ও পরীক্ষার জন্য কোনো ${type==="aplus"?"A+ প্রাপ্ত পরীক্ষার্থীর":"মেধা তালিকার"} তথ্য পাওয়া যায়নি।</div>`;
+    aplusResult.classList.remove("hidden");
     return;
   }
 
-  const years=unique(list.map(s=>String(s.year||""))).filter(Boolean);
-  const exams=unique(list.map(s=>String(s.examBn||s.exam||""))).filter(Boolean);
-  aplusMeta.innerHTML=`
-    <span>মোট A+ প্রাপ্ত: <b>${bnNum(list.length)}</b> জন</span>
-    ${years.length?`<span>শিক্ষাবর্ষ: <b>${esc(years.join(", "))}</b></span>`:""}
-    ${exams.length?`<span>পরীক্ষা: <b>${esc(exams.join(" / "))}</b></span>`:""}
-  `;
-
-  const rows=list.map((s,i)=>`
-    <tr>
+  let rows;
+  if(type==="aplus"){
+    rows=list.map(s=>`<tr>
       <td>${bnNum(s.roll)}</td>
       <td class="aplus-student-name">${esc(s.name||"—")}</td>
       <td>${esc(s.classBn||s.className||"—")}</td>
       <td>${s.total==null?"—":bnNum(s.total)}</td>
+      <td>${s.average==null?"—":bnNum(Number(s.average).toFixed(2))}</td>
       <td>${s.point==null?"—":bnNum(Number(s.point).toFixed(2))}</td>
       <td><strong class="aplus-grade">${esc(s.grade||"A+")}</strong></td>
-      <td>${typeof s.rank==="number"?bnNum(s.rank):esc(s.rank||"—")}</td>
     </tr>`).join("");
+  }else{
+    rows=list.map((s,i)=>`<tr>
+      <td><strong>${bnNum(i+1)}</strong></td>
+      <td class="aplus-student-name">${esc(s.name||"—")}</td>
+      <td>${esc(s.classBn||s.className||"—")}</td>
+      <td>${bnNum(s.roll)}</td>
+      <td>${s.total==null?"—":bnNum(s.total)}</td>
+      <td>${s.average==null?"—":bnNum(Number(s.average).toFixed(2))}</td>
+      <td>${esc(s.grade||"—")}</td>
+      <td>${s.point==null?"—":bnNum(Number(s.point).toFixed(2))}</td>
+    </tr>`).join("");
+  }
 
-  aplusResult.innerHTML=`
-    <table class="aplus-table">
-      <thead>
-        <tr>
-          <th>রোল নম্বর</th>
-          <th>পরীক্ষার্থীর নাম</th>
-          <th>শ্রেণী</th>
-          <th>মোট নম্বর</th>
-          <th>পয়েন্ট</th>
-          <th>গ্রেড</th>
-          <th>অবস্থান</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>`;
-  aplusPanel.classList.remove("hidden");
+  const headers=type==="aplus"
+    ? ["রোল নম্বর","পরীক্ষার্থীর নাম","শ্রেণী","মোট নম্বর","গড়","পয়েন্ট","গ্রেড"]
+    : ["মেধা অবস্থান","পরীক্ষার্থীর নাম","শ্রেণী","রোল নম্বর","মোট নম্বর","গড়","গ্রেড","পয়েন্ট"];
+  aplusResult.innerHTML=`<table class="aplus-table">
+    <thead><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+  aplusResult.classList.remove("hidden");
+  listPrintRow.classList.remove("hidden");
   aplusPanel.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
@@ -412,8 +451,23 @@ function printClassWiseResult(){
 
 function printAPlusResult(){
   if(!aplusPanel || aplusPanel.classList.contains("hidden")) return;
-  openPrintWindow(aplusPanel.innerHTML,"বৃত্তিপ্রাপ্ত বা A+ প্রাপ্ত পরীক্ষার্থীদের তালিকা","landscape");
+  const title=listType.value==="merit" ? "মেধা তালিকা" : "A+ প্রাপ্তদের তালিকা";
+  openPrintWindow(aplusPanel.innerHTML,title,"landscape");
 }
+
+listForm.addEventListener("submit",e=>{
+  e.preventDefault();
+  if(!listType.value||!listYear.value||!listExam.value){
+    aplusResult.innerHTML='<div class="classwise-empty">অনুগ্রহ করে তালিকা, সাল ও পরীক্ষা নির্বাচন করুন।</div>';
+    aplusResult.classList.remove("hidden");
+    return;
+  }
+  showListResult();
+});
+
+listType.addEventListener("change",()=>{ aplusResult.classList.add("hidden"); aplusMeta.innerHTML=""; listPrintRow.classList.add("hidden"); });
+listYear.addEventListener("change",()=>{ fillSelect(listExam,examOptions,"-- পরীক্ষা নির্বাচন করুন --"); aplusResult.classList.add("hidden"); aplusMeta.innerHTML=""; listPrintRow.classList.add("hidden"); });
+listExam.addEventListener("change",()=>{ aplusResult.classList.add("hidden"); aplusMeta.innerHTML=""; listPrintRow.classList.add("hidden"); });
 
 document.getElementById("classWiseForm").addEventListener("submit",e=>{
   e.preventDefault();
@@ -440,7 +494,8 @@ document.querySelectorAll("[data-view]").forEach(link=>link.addEventListener("cl
   }else if(view==="classwise"){
     classPanel.classList.remove("hidden");
   }else if(view==="aplus"){
-    showAPlusList();
+    resetListForm();
+    aplusPanel.classList.remove("hidden");
   }
 
   closeMenu();
