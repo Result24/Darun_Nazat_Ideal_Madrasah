@@ -1,5 +1,6 @@
 // ফলাফল ডাটা: ২০২৬ সালের দ্বিতীয় সাময়িক পরীক্ষা
 const students = [];
+let currentPersonalStudent = null;
 
 const yearSelect = document.getElementById("resultYear");
 const exam = document.getElementById("exam");
@@ -119,6 +120,7 @@ classWiseName.addEventListener("change",()=>{
 });
 
 function showPersonalResult(s){
+  currentPersonalStudent = s;
   const rows=(s.subjects||[]).map((x,i)=>`<tr><td>${bnNum(i+1)}</td><td>${esc(x.name)}</td><td>${x.marks==='*'?'—':bnNum(x.marks)}</td></tr>`).join("");
   const pos=typeof s.rank === "number" ? bnNum(s.rank) : esc(s.rank || "—");
   const absent=s.grade==='অনুপস্থিত' || !(s.subjects||[]).some(x=>typeof x.marks==='number');
@@ -162,61 +164,78 @@ form.addEventListener("reset",()=>setTimeout(()=>{
   resetPersonal(true); message.className="message hidden"; resultArea.classList.add("hidden");
 },0));
 
-function showAPlusList(){
-  const list=students
-    .filter(s=>String(s.grade||"").trim().toUpperCase()==="A+")
-    .slice()
-    .sort((a,b)=>{
-      const ta=Number(a.total)||0, tb=Number(b.total)||0;
-      if(tb!==ta) return tb-ta;
-      const ya=Number(a.year)||0, yb=Number(b.year)||0;
-      if(yb!==ya) return yb-ya;
-      return String(a.classBn||a.className||"").localeCompare(String(b.classBn||b.className||""));
+let currentListMode = "aplus";
+
+function isRealStudent(s){
+  return /^\d+$/.test(String(s?.roll ?? "").trim()) && String(s?.name ?? "").trim() !== "";
+}
+function rankNumber(s){
+  if(!s || !isRealStudent(s)) return Infinity;
+  if(typeof s.rank === "number" && Number.isFinite(s.rank)) return s.rank;
+  const raw=String(s.rank||"").trim().replace(/[০-৯]/g,d=>"0123456789"["০১২৩৪৫৬৭৮৯".indexOf(d)]);
+  const m=raw.match(/\d+/);
+  return m ? Number(m[0]) : Infinity;
+}
+function validStudents(list){ return list.filter(isRealStudent); }
+
+function showAPlusList(mode=currentListMode){
+  currentListMode = mode;
+  document.querySelectorAll(".list-option").forEach(btn=>{
+    btn.classList.toggle("active", btn.dataset.list===mode);
+  });
+
+  const real=validStudents(students);
+  let list;
+  if(mode === "merit"){
+    // প্রতিটি শ্রেণির ১ম–৩য় স্থানধারী শিক্ষার্থীদের মেধা তালিকা। টাই থাকলে সবাই থাকবে।
+    list=real.filter(s=>rankNumber(s)<=3).slice().sort((a,b)=>{
+      const ca=String(a.className||""), cb=String(b.className||"");
+      if(ca!==cb) return ca.localeCompare(cb,undefined,{numeric:true});
+      const ra=rankNumber(a), rb=rankNumber(b);
+      if(ra!==rb) return ra-rb;
+      return (Number(b.total)||0)-(Number(a.total)||0);
     });
+  }else{
+    list=real.filter(s=>String(s.grade||"").trim().toUpperCase()==="A+")
+      .slice().sort((a,b)=>{
+        const ya=Number(a.year)||0, yb=Number(b.year)||0;
+        if(yb!==ya) return yb-ya;
+        const ca=String(a.classBn||a.className||""), cb=String(b.classBn||b.className||"");
+        if(ca!==cb) return ca.localeCompare(cb);
+        const ra=rankNumber(a), rb=rankNumber(b);
+        if(ra!==rb) return ra-rb;
+        return (Number(b.total)||0)-(Number(a.total)||0);
+      });
+  }
 
   if(!list.length){
     aplusMeta.textContent="";
-    aplusResult.innerHTML='<div class="classwise-empty">এখনো কোনো এ প্লাস প্রাপ্ত পরীক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
+    aplusResult.innerHTML='<div class="classwise-empty">এই তালিকায় কোনো তথ্য পাওয়া যায়নি।</div>';
     aplusPanel.classList.remove("hidden");
     return;
   }
 
-  const years=unique(list.map(s=>String(s.year||""))).filter(Boolean);
-  const exams=unique(list.map(s=>String(s.examBn||s.exam||""))).filter(Boolean);
-  aplusMeta.innerHTML=`
-    <span>মোট এ প্লাস প্রাপ্ত: <b>${bnNum(list.length)}</b> জন</span>
-    ${years.length?`<span>শিক্ষাবর্ষ: <b>${esc(years.join(", "))}</b></span>`:""}
-    ${exams.length?`<span>পরীক্ষা: <b>${esc(exams.join(" / "))}</b></span>`:""}
-  `;
+  const title = mode === "merit" ? "মেধা তালিকা" : "A+ প্রাপ্তদের তালিকা";
+  aplusMeta.innerHTML=`<span>${title}: <b>${bnNum(list.length)}</b> জন</span><span>শিক্ষাবর্ষ: <b>২০২৬</b></span><span>পরীক্ষা: <b>দ্বিতীয় সাময়িক পরীক্ষা</b></span>`;
 
-  const rows=list.map((s,i)=>`
-    <tr>
+  const rows=list.map((s,i)=>{
+    const pos=rankNumber(s);
+    return `<tr>
       <td>${bnNum(i+1)}</td>
       <td>${bnNum(s.roll)}</td>
       <td class="aplus-student-name">${esc(s.name||"—")}</td>
       <td>${esc(s.classBn||s.className||"—")}</td>
       <td>${s.total==null?"—":bnNum(s.total)}</td>
+      <td>${s.average==null?"—":bnNum(Number(s.average).toFixed(2))}</td>
       <td>${s.point==null?"—":bnNum(Number(s.point).toFixed(2))}</td>
-      <td><strong class="aplus-grade">${esc(s.grade||"A+")}</strong></td>
-      <td>${typeof s.rank==="number"?bnNum(s.rank):esc(s.rank||"—")}</td>
-    </tr>`).join("");
+      <td><strong class="aplus-grade">${esc(s.grade||"—")}</strong></td>
+      <td>${pos===Infinity?"—":bnNum(pos)}</td>
+    </tr>`;
+  }).join("");
 
-  aplusResult.innerHTML=`
-    <table class="aplus-table">
-      <thead>
-        <tr>
-          <th>ক্রমিক নং</th>
-          <th>রোল নম্বর</th>
-          <th>পরীক্ষার্থীর নাম</th>
-          <th>শ্রেণী</th>
-          <th>মোট নম্বর</th>
-          <th>পয়েন্ট</th>
-          <th>গ্রেড</th>
-          <th>অবস্থান</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>`;
+  aplusResult.innerHTML=`<table class="aplus-table">
+    <thead><tr><th>ক্রম</th><th>রোল</th><th>পরীক্ষার্থীর নাম</th><th>শ্রেণী</th><th>মোট</th><th>গড়</th><th>পয়েন্ট</th><th>গ্রেড</th><th>অবস্থান</th></tr></thead>
+    <tbody>${rows}</tbody></table>`;
   aplusPanel.classList.remove("hidden");
   aplusPanel.scrollIntoView({behavior:"smooth",block:"start"});
 }
@@ -226,73 +245,92 @@ function showClassWiseResult(){
   classWiseResult.classList.add("hidden");
   if(!y||!ev||!c){return;}
 
-  const list=students.filter(s=>String(s.year||"")===y&&s.exam===ev&&s.className===c);
+  // শুধুমাত্র আসল শিক্ষার্থী রেকর্ড নেওয়া হবে; grading guide/ফাঁকা সারি বাদ যাবে।
+  const list=validStudents(students.filter(s=>String(s.year||"")===y&&s.exam===ev&&s.className===c));
   if(!list.length){
-    classWiseResult.innerHTML='<div class="classwise-empty">দুঃখিত! এই সাল ও শ্রেণির কোনো ফলাফল পাওয়া যায়নি।</div>';
-    classWiseResult.classList.remove("hidden");
-    return;
+    classWiseResult.innerHTML='<div class="classwise-empty">দুঃখিত! এই সাল ও শ্রেণির কোনো ফলাফল পাওয়া যায়নি।</div>';
+    classWiseResult.classList.remove("hidden"); return;
   }
-
   const f=list[0];
-
-  // এই শ্রেণির সব শিক্ষার্থীর subject list থেকে কলাম তৈরি হবে।
   const subjectNames=[];
   list.forEach(s=>(s.subjects||[]).forEach(x=>{
     const name=String(x.name||"").trim();
-    if(name && !subjectNames.includes(name)) subjectNames.push(name);
+    if(name&&!subjectNames.includes(name)) subjectNames.push(name);
   }));
-
   const headers=["ক্রম","শিক্ষার্থীর নাম",...subjectNames,"মোট","গড়","গ্রেড","অবস্থান"];
-
   const rows=list.map((s,i)=>{
-    const marks={};
-    (s.subjects||[]).forEach(x=>{
-      const n=String(x.name||"").trim();
-      if(n) marks[n]=x.marks;
-    });
-
-    const subjectCells=subjectNames.map(n=>{
-      const v=marks[n];
-      return `<td>${v==null||v===""||v==="*"?"—":bnNum(v)}</td>`;
-    }).join("");
-
-    return `<tr>
-      <td>${bnNum(i+1)}</td>
-      <td class="student-name">${esc(s.name)}</td>
-      ${subjectCells}
-      <td>${s.total==null?"—":bnNum(s.total)}</td>
-      <td>${s.average==null?"—":bnNum(Number(s.average).toFixed(2))}</td>
-      <td>${esc(s.grade||"—")}</td>
-      <td>${typeof s.rank==="number"?bnNum(s.rank):esc(s.rank||"—")}</td>
-    </tr>`;
+    const marks={}; (s.subjects||[]).forEach(x=>{const n=String(x.name||"").trim();if(n)marks[n]=x.marks;});
+    const cells=subjectNames.map(n=>{const v=marks[n];return `<td>${v==null||v===""||v==="*"?"—":bnNum(v)}</td>`}).join("");
+    const pos=rankNumber(s);
+    return `<tr><td>${bnNum(i+1)}</td><td class="student-name">${esc(s.name)}</td>${cells}<td>${s.total==null?"—":bnNum(s.total)}</td><td>${s.average==null?"—":bnNum(Number(s.average).toFixed(2))}</td><td>${esc(s.grade||"—")}</td><td>${pos===Infinity?"—":bnNum(pos)}</td></tr>`;
   }).join("");
 
-  const headHtml=`
-    <div class="classwise-head">
-      <img src="logo.jpg" alt="মাদ্রাসার লোগো">
-      <div>
-        <h2>${esc(f.classBn||f.className)} — শ্রেণিভিত্তিক ফলাফল</h2>
-        <p>শিক্ষাবর্ষ: ${bnNum(y)} — ${esc(f.examBn||f.exam)}</p>
-      </div>
-    </div>`;
+  const mobileCards=list.map((s,i)=>{
+    const rows=(s.subjects||[]).map(x=>`<div class="mobile-subject"><span>${esc(x.name||"—")}</span><b>${x.marks==null||x.marks===""||x.marks==="*"?"—":bnNum(x.marks)}</b></div>`).join("");
+    const pos=rankNumber(s);
+    return `<article class="student-mobile-card"><div class="mobile-student-head"><strong>${bnNum(i+1)}. ${esc(s.name)}</strong><span>রোল: ${bnNum(s.roll)}</span></div><div class="mobile-subjects">${rows}</div><div class="mobile-summary"><span>মোট <b>${s.total==null?"—":bnNum(s.total)}</b></span><span>গড় <b>${s.average==null?"—":bnNum(Number(s.average).toFixed(2))}</b></span><span>গ্রেড <b>${esc(s.grade||"—")}</b></span><span>অবস্থান <b>${pos===Infinity?"—":bnNum(pos)}</b></span></div></article>`;
+  }).join("");
 
-  const tableHtml=`
-    <div class="table-wrap classwise-print-table-wrap">
-      <table class="result-table classwise-table">
-        <thead><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>`;
-
-  classWiseResult.innerHTML=`
-    ${headHtml}
-    ${tableHtml}
-    <div class="print-row">
-      <button class="print-btn" onclick="printClassWiseResult()">🖨 ফলাফল প্রিন্ট / PDF</button>
-    </div>`;
-
+  const headHtml=`<div class="classwise-head"><img src="logo.jpg" alt="মাদ্রাসার লোগো"><div><h2>${esc(f.classBn||f.className)} — শ্রেণিভিত্তিক ফলাফল</h2><p>শিক্ষাবর্ষ: ${bnNum(y)} — ${esc(f.examBn||f.exam)}</p></div></div>`;
+  const tableHtml=`<div class="table-wrap classwise-print-table-wrap"><table class="result-table classwise-table"><thead><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>`;
+  classWiseResult.innerHTML=`${headHtml}<div class="classwise-desktop">${tableHtml}</div><div class="classwise-mobile">${mobileCards}</div><div class="print-row"><button class="print-btn" onclick="printClassWiseResult()">🖨 ফলাফল প্রিন্ট / PDF</button></div>`;
   classWiseResult.classList.remove("hidden");
   classWiseResult.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function buildPersonalPrintSheet(s){
+  const rows=(s.subjects||[]).map(x=>{
+    const marks=x.marks==='*' ? '—' : bnNum(x.marks);
+    return `<tr><td class="subject-name">${esc(x.name||'—')}</td><td>${marks}</td></tr>`;
+  }).join("");
+  const pos=typeof s.rank === "number" ? bnNum(s.rank) : esc(s.rank || "—");
+  const absent=s.grade==='অনুপস্থিত' || !(s.subjects||[]).some(x=>typeof x.marks==='number');
+  const status=absent ? 'অনুপস্থিত / অসম্পূর্ণ' : (s.grade==='F' ? 'ফেল' : 'উত্তীর্ণ');
+  const grade=esc(s.grade||'—');
+  const total=s.total==null?'—':bnNum(s.total);
+  const avg=s.average==null?'—':bnNum(Number(s.average).toFixed(2));
+  const point=s.point==null?'—':bnNum(Number(s.point).toFixed(2));
+  return `
+  <div class="print-sheet personal-print-sheet">
+    <div class="print-decor top"></div>
+    <div class="print-header">
+      <div class="print-logo-wrap"><img src="logo.jpg" alt="মাদ্রাসার লোগো"></div>
+      <div class="print-title">
+        <h1>দারুন নাজাত আইডিয়াল মাদরাসা</h1>
+        <h2>পরীক্ষার ফলাফল</h2>
+        <p>আবুতোরাব, মিরসরাই, চট্টগ্রাম</p>
+        <p>শিক্ষাবর্ষ: ${bnNum(s.year||'2026')} — ${esc(s.examBn||s.exam||'')}</p>
+      </div>
+      <div class="print-seal">RESULT</div>
+    </div>
+    <div class="print-student-title">শিক্ষার্থীর ফলাফল বিবরণী</div>
+    <div class="print-meta-row">
+      <div><span>পরীক্ষার্থীর নাম</span><strong>${esc(s.name||'—')}</strong></div>
+      <div><span>শ্রেণি</span><strong>${esc(s.classBn||s.className||'—')}</strong></div>
+      <div><span>রোল নম্বর</span><strong>${bnNum(s.roll)}</strong></div>
+      <div><span>অবস্থান</span><strong>${pos}</strong></div>
+    </div>
+    <div class="print-body-grid">
+      <div class="print-subject-area">
+        <div class="print-section-label">বিষয়ভিত্তিক ফলাফল</div>
+        <table class="result-table print-result-table">
+          <thead><tr><th>বিষয়</th><th>নম্বর</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <div class="grade-chart">
+        <div class="grade-chart-title">ফলাফলের সারাংশ</div>
+        <div class="grade-highlight"><span>গ্রেড</span><b>${grade}</b></div>
+        <div class="mini-stat"><span>মোট</span><strong>${total}</strong></div>
+        <div class="mini-stat"><span>গড়</span><strong>${avg}</strong></div>
+        <div class="mini-stat"><span>পয়েন্ট</span><strong>${point}</strong></div>
+      </div>
+    </div>
+    <div class="print-status ${s.grade==='F'||absent?'bad':'good'}">ফলাফল: <b>${status}</b></div>
+    <div class="print-footer-note">দারুন নাজাত আইডিয়াল মাদরাসা — ফলাফল প্রকাশনা</div>
+    <div class="print-signatures"><span>শ্রেণি শিক্ষক</span><span>পরীক্ষা নিয়ন্ত্রক</span><span>অধ্যক্ষ</span></div>
+    <div class="print-decor bottom"></div>
+  </div>`;
 }
 
 function openPrintWindow(htmlContent,title,orientation="portrait"){
@@ -346,8 +384,8 @@ ${htmlContent}
 }
 
 function printResultArea(){
-  if(!resultArea || resultArea.classList.contains("hidden")) return;
-  openPrintWindow(resultArea.innerHTML,"ব্যক্তিগত ফলাফল");
+  if(!resultArea || resultArea.classList.contains("hidden") || !currentPersonalStudent) return;
+  openPrintWindow(buildPersonalPrintSheet(currentPersonalStudent),"ব্যক্তিগত ফলাফল");
 }
 
 function printClassWiseResult(){
@@ -357,7 +395,7 @@ function printClassWiseResult(){
 
 function printAPlusResult(){
   if(!aplusPanel || aplusPanel.classList.contains("hidden")) return;
-  openPrintWindow(aplusPanel.innerHTML,"বৃত্তিপ্রাপ্ত বা এ প্লাস প্রাপ্ত পরীক্ষার্থীদের তালিকা","landscape");
+  openPrintWindow(aplusPanel.innerHTML,"বৃত্তিপ্রাপ্ত বা A+ প্রাপ্ত পরীক্ষার্থীদের তালিকা","landscape");
 }
 
 document.getElementById("classWiseForm").addEventListener("submit",e=>{
@@ -370,6 +408,8 @@ document.getElementById("classWiseForm").addEventListener("submit",e=>{
   }
   showClassWiseResult();
 });
+
+document.querySelectorAll(".list-option").forEach(btn=>btn.addEventListener("click",()=>showAPlusList(btn.dataset.list)));
 
 document.querySelectorAll("[data-view]").forEach(link=>link.addEventListener("click",e=>{
   e.preventDefault();
