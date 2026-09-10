@@ -34,6 +34,7 @@
     <div class="drawer-logo"><img src="logo.jpg" alt="মাদ্রাসার লোগো"></div>
     <a href="#personal" data-view="personal">ব্যক্তিগত ফলাফল</a>
     <a href="#classwise" data-view="classwise">ক্লাসওয়ারী ফলাফল</a>
+    <a href="#aplus" data-view="aplus">A+ প্রাপ্তদের তালিকা</a>
   </nav>
   <main class="container main">
     <section class="result-card" id="personalPanel">
@@ -100,6 +101,20 @@
         </div>
       </form>
       <div id="classWiseResult" class="classwise-output hidden"></div>
+    </section>
+    <section class="result-card aplus-card hidden" id="aplusPanel">
+      <div class="aplus-header">
+        <img src="logo.jpg" alt="দারুন নাজাত আইডিয়াল মাদরাসার লোগো">
+        <div>
+          <h2>দারুন নাজাত আইডিয়াল মাদরাসা</h2>
+          <p>বৃত্তিপ্রাপ্ত বা A+ প্রাপ্ত পরীক্ষার্থীদের তালিকা</p>
+        </div>
+      </div>
+      <div id="aplusMeta" class="aplus-meta"></div>
+      <div id="aplusResult" class="aplus-table-wrap"></div>
+      <div class="print-row">
+        <button class="print-btn" onclick="printAPlusResult()">🖨 তালিকা প্রিন্ট / PDF</button>
+      </div>
     </section>
     <section id="notice" class="info-card">
       <h3>📢 ফলাফল দেখার নির্দেশনা</h3>

@@ -1,5 +1,6 @@
 // ফলাফল ডাটা: ২০২৬ সালের দ্বিতীয় সাময়িক পরীক্ষা
 const students = [];
+let currentPersonalStudent = null;
 
 const yearSelect = document.getElementById("resultYear");
 const exam = document.getElementById("exam");
@@ -13,6 +14,9 @@ const classYear = document.getElementById("classYear");
 const classWiseExam = document.getElementById("classWiseExam");
 const classWiseName = document.getElementById("classWiseName");
 const classWiseResult = document.getElementById("classWiseResult");
+const aplusPanel = document.getElementById("aplusPanel");
+const aplusResult = document.getElementById("aplusResult");
+const aplusMeta = document.getElementById("aplusMeta");
 const menu = document.getElementById("mobileMenu");
 const overlay = document.getElementById("menuOverlay");
 
@@ -116,6 +120,7 @@ classWiseName.addEventListener("change",()=>{
 });
 
 function showPersonalResult(s){
+  currentPersonalStudent = s;
   const rows=(s.subjects||[]).map((x,i)=>`<tr><td>${bnNum(i+1)}</td><td>${esc(x.name)}</td><td>${x.marks==='*'?'—':bnNum(x.marks)}</td></tr>`).join("");
   const pos=typeof s.rank === "number" ? bnNum(s.rank) : esc(s.rank || "—");
   const absent=s.grade==='অনুপস্থিত' || !(s.subjects||[]).some(x=>typeof x.marks==='number');
@@ -158,6 +163,63 @@ form.addEventListener("submit",e=>{
 form.addEventListener("reset",()=>setTimeout(()=>{
   resetPersonal(true); message.className="message hidden"; resultArea.classList.add("hidden");
 },0));
+
+function showAPlusList(){
+  const list=students
+    .filter(s=>String(s.grade||"").trim().toUpperCase()==="A+")
+    .slice()
+    .sort((a,b)=>{
+      const ta=Number(a.total)||0, tb=Number(b.total)||0;
+      if(tb!==ta) return tb-ta;
+      const ya=Number(a.year)||0, yb=Number(b.year)||0;
+      if(yb!==ya) return yb-ya;
+      return String(a.classBn||a.className||"").localeCompare(String(b.classBn||b.className||""));
+    });
+
+  if(!list.length){
+    aplusMeta.textContent="";
+    aplusResult.innerHTML='<div class="classwise-empty">এখনো কোনো A+ প্রাপ্ত পরীক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
+    aplusPanel.classList.remove("hidden");
+    return;
+  }
+
+  const years=unique(list.map(s=>String(s.year||""))).filter(Boolean);
+  const exams=unique(list.map(s=>String(s.examBn||s.exam||""))).filter(Boolean);
+  aplusMeta.innerHTML=`
+    <span>মোট A+ প্রাপ্ত: <b>${bnNum(list.length)}</b> জন</span>
+    ${years.length?`<span>শিক্ষাবর্ষ: <b>${esc(years.join(", "))}</b></span>`:""}
+    ${exams.length?`<span>পরীক্ষা: <b>${esc(exams.join(" / "))}</b></span>`:""}
+  `;
+
+  const rows=list.map((s,i)=>`
+    <tr>
+      <td>${bnNum(s.roll)}</td>
+      <td class="aplus-student-name">${esc(s.name||"—")}</td>
+      <td>${esc(s.classBn||s.className||"—")}</td>
+      <td>${s.total==null?"—":bnNum(s.total)}</td>
+      <td>${s.point==null?"—":bnNum(Number(s.point).toFixed(2))}</td>
+      <td><strong class="aplus-grade">${esc(s.grade||"A+")}</strong></td>
+      <td>${typeof s.rank==="number"?bnNum(s.rank):esc(s.rank||"—")}</td>
+    </tr>`).join("");
+
+  aplusResult.innerHTML=`
+    <table class="aplus-table">
+      <thead>
+        <tr>
+          <th>রোল নম্বর</th>
+          <th>পরীক্ষার্থীর নাম</th>
+          <th>শ্রেণী</th>
+          <th>মোট নম্বর</th>
+          <th>পয়েন্ট</th>
+          <th>গ্রেড</th>
+          <th>অবস্থান</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+  aplusPanel.classList.remove("hidden");
+  aplusPanel.scrollIntoView({behavior:"smooth",block:"start"});
+}
 
 function showClassWiseResult(){
   const y=classYear.value, ev=classWiseExam.value, c=classWiseName.value;
@@ -233,7 +295,62 @@ function showClassWiseResult(){
   classWiseResult.scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-function openPrintWindow(htmlContent,title){
+function buildPersonalPrintSheet(s){
+  const rows=(s.subjects||[]).map(x=>{
+    const marks=x.marks==='*' ? '—' : bnNum(x.marks);
+    return `<tr><td class="subject-name">${esc(x.name||'—')}</td><td>${marks}</td></tr>`;
+  }).join("");
+  const pos=typeof s.rank === "number" ? bnNum(s.rank) : esc(s.rank || "—");
+  const absent=s.grade==='অনুপস্থিত' || !(s.subjects||[]).some(x=>typeof x.marks==='number');
+  const status=absent ? 'অনুপস্থিত / অসম্পূর্ণ' : (s.grade==='F' ? 'ফেল' : 'উত্তীর্ণ');
+  const grade=esc(s.grade||'—');
+  const total=s.total==null?'—':bnNum(s.total);
+  const avg=s.average==null?'—':bnNum(Number(s.average).toFixed(2));
+  const point=s.point==null?'—':bnNum(Number(s.point).toFixed(2));
+  return `
+  <div class="print-sheet personal-print-sheet">
+    <div class="print-decor top"></div>
+    <div class="print-header">
+      <div class="print-logo-wrap"><img src="logo.jpg" alt="মাদ্রাসার লোগো"></div>
+      <div class="print-title">
+        <h1>দারুন নাজাত আইডিয়াল মাদরাসা</h1>
+        <h2>পরীক্ষার ফলাফল</h2>
+        <p>আবুতোরাব, মিরসরাই, চট্টগ্রাম</p>
+        <p>শিক্ষাবর্ষ: ${bnNum(s.year||'2026')} — ${esc(s.examBn||s.exam||'')}</p>
+      </div>
+      <div class="print-seal">RESULT</div>
+    </div>
+    <div class="print-student-title">শিক্ষার্থীর ফলাফল বিবরণী</div>
+    <div class="print-meta-row">
+      <div><span>পরীক্ষার্থীর নাম</span><strong>${esc(s.name||'—')}</strong></div>
+      <div><span>শ্রেণি</span><strong>${esc(s.classBn||s.className||'—')}</strong></div>
+      <div><span>রোল নম্বর</span><strong>${bnNum(s.roll)}</strong></div>
+      <div><span>অবস্থান</span><strong>${pos}</strong></div>
+    </div>
+    <div class="print-body-grid">
+      <div class="print-subject-area">
+        <div class="print-section-label">বিষয়ভিত্তিক ফলাফল</div>
+        <table class="result-table print-result-table">
+          <thead><tr><th>বিষয়</th><th>নম্বর</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <div class="grade-chart">
+        <div class="grade-chart-title">ফলাফলের সারাংশ</div>
+        <div class="grade-highlight"><span>গ্রেড</span><b>${grade}</b></div>
+        <div class="mini-stat"><span>মোট</span><strong>${total}</strong></div>
+        <div class="mini-stat"><span>গড়</span><strong>${avg}</strong></div>
+        <div class="mini-stat"><span>পয়েন্ট</span><strong>${point}</strong></div>
+      </div>
+    </div>
+    <div class="print-status ${s.grade==='F'||absent?'bad':'good'}">ফলাফল: <b>${status}</b></div>
+    <div class="print-footer-note">দারুন নাজাত আইডিয়াল মাদরাসা — ফলাফল প্রকাশনা</div>
+    <div class="print-signatures"><span>শ্রেণি শিক্ষক</span><span>পরীক্ষা নিয়ন্ত্রক</span><span>অধ্যক্ষ</span></div>
+    <div class="print-decor bottom"></div>
+  </div>`;
+}
+
+function openPrintWindow(htmlContent,title,orientation="portrait"){
   const win=window.open("", "_blank");
   if(!win){
     // Popup blocked হলে স্বাভাবিক print fallback।
@@ -253,7 +370,7 @@ function openPrintWindow(htmlContent,title){
 <title>${esc(title)}</title>
 ${links}
 <style>
-@page{size:A4 portrait;margin:8mm}
+@page{size:A4 ${orientation};margin:8mm}
 @page classwisePage{size:A4 landscape;margin:7mm}
 html,body{background:#fff!important;color:#111!important;margin:0!important;padding:0!important}
 body{font-family:'Noto Sans Bengali',Arial,sans-serif!important}
@@ -284,13 +401,18 @@ ${htmlContent}
 }
 
 function printResultArea(){
-  if(!resultArea || resultArea.classList.contains("hidden")) return;
-  openPrintWindow(resultArea.innerHTML,"ব্যক্তিগত ফলাফল");
+  if(!resultArea || resultArea.classList.contains("hidden") || !currentPersonalStudent) return;
+  openPrintWindow(buildPersonalPrintSheet(currentPersonalStudent),"ব্যক্তিগত ফলাফল");
 }
 
 function printClassWiseResult(){
   if(!classWiseResult || classWiseResult.classList.contains("hidden")) return;
-  openPrintWindow(classWiseResult.innerHTML,"শ্রেণিভিত্তিক ফলাফল");
+  openPrintWindow(classWiseResult.innerHTML,"শ্রেণিভিত্তিক ফলাফল","landscape");
+}
+
+function printAPlusResult(){
+  if(!aplusPanel || aplusPanel.classList.contains("hidden")) return;
+  openPrintWindow(aplusPanel.innerHTML,"বৃত্তিপ্রাপ্ত বা A+ প্রাপ্ত পরীক্ষার্থীদের তালিকা","landscape");
 }
 
 document.getElementById("classWiseForm").addEventListener("submit",e=>{
@@ -307,15 +429,21 @@ document.getElementById("classWiseForm").addEventListener("submit",e=>{
 document.querySelectorAll("[data-view]").forEach(link=>link.addEventListener("click",e=>{
   e.preventDefault();
   const view=link.dataset.view;
+
+  personalPanel.classList.add("hidden");
+  classPanel.classList.add("hidden");
+  aplusPanel.classList.add("hidden");
+  resultArea.classList.add("hidden");
+
   if(view==="personal"){
     personalPanel.classList.remove("hidden");
-    classPanel.classList.add("hidden");
-  }else{
-    personalPanel.classList.add("hidden");
+  }else if(view==="classwise"){
     classPanel.classList.remove("hidden");
+  }else if(view==="aplus"){
+    showAPlusList();
   }
+
   closeMenu();
-  resultArea.classList.add("hidden");
   window.scrollTo({top:0,behavior:"smooth"});
 }));
 
