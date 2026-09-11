@@ -191,25 +191,56 @@ function showListResult(){
   if(!type||!y||!ev) return;
 
   const base=students.filter(s=>String(s.year||"")===String(y)&&s.exam===ev);
+
+  // A+ ও মেধা—দুই তালিকাতেই শ্রেণির নির্দিষ্ট ক্রম:
+  // নার্সারি → প্রথম → দ্বিতীয় → তৃতীয় → চতুর্থ → পঞ্চম → ষষ্ঠ → হিফজ
+  const classOrder=["Narsari","Class-1","Class-2","Class-3","Class-4","Class-5","Class-6","Hifz"];
+  const classRank=new Map(classOrder.map((c,i)=>[c,i]));
+
+  // Excel/পুরোনো ডাটায় অবস্থান কখনো 1, কখনো "১ম"/"২য়"/"৩য়" হিসেবে থাকে।
+  // তালিকা তৈরির সময় সব ফরম্যাটকে একই সংখ্যায় রূপান্তর করা হয়।
+  function rankNumber(v){
+    if(typeof v==="number" && isFinite(v)) return v;
+    const s=String(v ?? "").trim().replace(/[০-৯]/g,d=>"০১২৩৪৫৬৭৮৯".indexOf(d));
+    const m=s.match(/\d+/);
+    return m ? Number(m[0]) : null;
+  }
+
+  function sortWithinClass(a,b){
+    const ra=rankNumber(a.rank), rb=rankNumber(b.rank);
+    if(ra!==null && rb!==null && ra!==rb) return ra-rb;
+    if(ra!==null && rb===null) return -1;
+    if(ra===null && rb!==null) return 1;
+
+    const aa=Number(a.average)||0, ab=Number(b.average)||0;
+    if(ab!==aa) return ab-aa;
+    const ta=Number(a.total)||0, tb=Number(b.total)||0;
+    if(tb!==ta) return tb-ta;
+    return String(a.name||"").localeCompare(String(b.name||""),'bn');
+  }
+
+  function sortByClassThenRank(a,b){
+    const ca=classRank.has(a.className)?classRank.get(a.className):999;
+    const cb=classRank.has(b.className)?classRank.get(b.className):999;
+    if(ca!==cb) return ca-cb;
+    return sortWithinClass(a,b);
+  }
+
   let list=[];
   if(type==="aplus"){
-    list=base.filter(s=>String(s.grade||"").trim().toUpperCase()==="A+")
-      .sort((a,b)=>{
-        const aa=Number(a.average)||0, ab=Number(b.average)||0;
-        if(ab!==aa) return ab-aa;
-        return (Number(b.total)||0)-(Number(a.total)||0);
-      });
+    // A+ পাওয়া সব শিক্ষার্থী থাকবে; অবস্থান অনুযায়ী নিজ নিজ শ্রেণির মধ্যে সাজানো হবে।
+    list=base
+      .filter(s=>String(s.grade||"").trim().toUpperCase()==="A+")
+      .sort(sortByClassThenRank);
   }else{
-    // মেধা তালিকায় শ্রেণিভেদে মোট নম্বর আলাদা হতে পারে, তাই গড় নম্বরকে
-    // মূল মানদণ্ড হিসেবে ব্যবহার করা হয়েছে; সমান গড়ে মোট নম্বর দিয়ে সাজানো হয়।
-    list=base.filter(s=>typeof s.average==='number' && isFinite(s.average) && s.grade!=="অনুপস্থিত")
-      .sort((a,b)=>{
-        const aa=Number(a.average)||0, ab=Number(b.average)||0;
-        if(ab!==aa) return ab-aa;
-        const ta=Number(a.total)||0, tb=Number(b.total)||0;
-        if(tb!==ta) return tb-ta;
-        return String(a.name||"").localeCompare(String(b.name||""),'bn');
-      });
+    // মেধা তালিকায় কেবল ১ম, ২য় ও ৩য় স্থান (প্রতি শ্রেণিতে) থাকবে।
+    list=base
+      .filter(s=>{
+        if(s.grade==="অনুপস্থিত") return false;
+        const r=rankNumber(s.rank);
+        return r!==null && r>=1 && r<=3;
+      })
+      .sort(sortByClassThenRank);
   }
 
   const title=type==="aplus" ? "A+ প্রাপ্তদের তালিকা" : "মেধা তালিকা";
@@ -226,31 +257,30 @@ function showListResult(){
 
   let rows;
   if(type==="aplus"){
-    rows=list.map(s=>`<tr>
-      <td>${bnNum(s.roll)}</td>
+    rows=list.map((s,i)=>`<tr>
+      <td><strong>${bnNum(i+1)}</strong></td>
       <td class="aplus-student-name">${esc(s.name||"—")}</td>
       <td>${esc(s.classBn||s.className||"—")}</td>
       <td>${s.total==null?"—":bnNum(s.total)}</td>
       <td>${s.average==null?"—":bnNum(Number(s.average).toFixed(2))}</td>
       <td>${s.point==null?"—":bnNum(Number(s.point).toFixed(2))}</td>
       <td><strong class="aplus-grade">${esc(s.grade||"A+")}</strong></td>
+      <td>${typeof s.rank==="number" ? bnNum(s.rank) : esc(s.rank||"—")}</td>
     </tr>`).join("");
   }else{
     rows=list.map((s,i)=>`<tr>
       <td><strong>${bnNum(i+1)}</strong></td>
       <td class="aplus-student-name">${esc(s.name||"—")}</td>
       <td>${esc(s.classBn||s.className||"—")}</td>
-      <td>${bnNum(s.roll)}</td>
       <td>${s.total==null?"—":bnNum(s.total)}</td>
       <td>${s.average==null?"—":bnNum(Number(s.average).toFixed(2))}</td>
-      <td>${esc(s.grade||"—")}</td>
       <td>${s.point==null?"—":bnNum(Number(s.point).toFixed(2))}</td>
+      <td><strong class="aplus-grade">${esc(s.grade||"—")}</strong></td>
+      <td>${typeof s.rank==="number" ? bnNum(s.rank) : esc(s.rank||"—")}</td>
     </tr>`).join("");
   }
 
-  const headers=type==="aplus"
-    ? ["রোল নম্বর","পরীক্ষার্থীর নাম","শ্রেণী","মোট নম্বর","গড়","পয়েন্ট","গ্রেড"]
-    : ["মেধা অবস্থান","পরীক্ষার্থীর নাম","শ্রেণী","রোল নম্বর","মোট নম্বর","গড়","গ্রেড","পয়েন্ট"];
+  const headers=["ক্রমিক নং","পরীক্ষার্থীর নাম","শ্রেণী","মোট নম্বর","গড়","পয়েন্ট","গ্রেড","অবস্থান"];
   aplusResult.innerHTML=`<table class="aplus-table">
     <thead><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead>
     <tbody>${rows}</tbody>
